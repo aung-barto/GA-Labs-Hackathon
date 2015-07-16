@@ -1,16 +1,16 @@
 class HomeController < ApplicationController
-  # def index
-  #   @categories = Category.all
-  #   @categories.distinct.map do |category|
-  # 	 @posts = Post.where(category_id: category.id).limit(5)
-  #   end
-  # end
   def index
     @categories = Category.all
-    
-     @posts = Post.limit(5)
-  
+    @categories.each do |category|
+  	 @posts = Post.all
+    end
   end
+  # def index
+  #   @categories = Category.all
+    
+  #    @posts = Post.limit(5)
+  
+  # end
   # def index
   #   @categories = Category.all
   #   # @categories.each do |category|

@@ -3,19 +3,14 @@
     <ul>
       <li><%= cat.name %></li>
       <% @posts.each do |post| %>
-        <ul style="list-style-type: none ">
-          <li><h3><%= post.title %></h3></li>
-          <li><img src="<%= post.image %>" style="width: 100px; height: auto"></li>
-          <li><%= post.content[0...50]+"..." %></li>
-          <li><%= post.category_id %></li>
-        </ul><br>
+        <% if post.category_id == cat.id %>
+          <ul style="list-style-type: none ">
+            <li><h3><%= post.title %></h3></li>
+            <li>Category <%= post.category_id %></li>
+            <li><img src="<%= post.image %>" style="width: 100px; height: auto"></li>
+            <li><%= post.content %></li>
+          </ul><br>
+        <% end %>
       <% end %>
     </ul>
   <% end %>
-
-  
-
-
-<% @posts.map(&:category).uniq.each do |cat| %>
-  <%= cat.name %>
-<% end %>
