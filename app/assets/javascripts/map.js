@@ -3,20 +3,25 @@ $(document).ready(function(){
 });
 
 var map;
-
+var results;
 function initialize(){
-  var mapOptions = {
-    center: new google.maps.LatLng(40.7903, -73.9597),
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map($('#map')[0], mapOptions);
 
+
+  // grabbing address from location input
   var address = $('#address').html();
   var geocoder = new google.maps.Geocoder();
   console.log(address);
   geocoder.geocode({ 'address': address}, function(results, status){
+    console.log(results[0].geometry.location);
     if (status == google.maps.GeocoderStatus.OK) {
+    var mapOptions = {
+      // use current location as the center
+      center: new google.maps.LatLng(results[0].geometry.location),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map($('#map')[0], mapOptions);
+
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: map,
