@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @location = Location.find(@post.location_id)
     @category = Category.find(@post.category_id)
 	end
+
+  def locations
+    @locations = Location.all
+    render json: @locations
+  end
   
   def search
     query = params[:name]
