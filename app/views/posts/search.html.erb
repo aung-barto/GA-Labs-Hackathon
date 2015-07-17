@@ -1,5 +1,9 @@
+
 <h1>you hit the search page</h1>
+
 <% @results.each do |post| %>
-  <h1><%= post.title %></h1>
+  <li><h3><%= post.title %></h3></li>
+  <li><img src="<%= post.image %>" style="width: 100px; height: auto"></li>
+  <li><%= post.content %></li>
   <hr>
 <% end %>
