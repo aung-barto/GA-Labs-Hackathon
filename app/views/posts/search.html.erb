@@ -1,9 +1,36 @@
 
+<style>
+	body {
+		padding-left: 40px;
+
+	}
+	li {
+	/*	width: 33%;
+		float: left;*/
+		list-style-type: none;
+	}
+	#post {
+		width: 33%;
+		float: left;
+	}
+	img {
+		width: 200px;
+		height: 150px;
+	}
+
+</style>
 <h1>you hit the search page</h1>
 
+<%= form_tag '/search', method: 'get' do %>
+  <%= label_tag "search" %>
+  <%= text_field_tag :name %>
+  <%= submit_tag "search" %>
+<% end %>
+
 <% @results.each do |post| %>
-  <li><h3><%= post.title %></h3></li>
-  <li><img src="<%= post.image %>" style="width: 100px; height: auto"></li>
-  <li><%= post.content %></li>
-  <hr>
+<div id = 'post'>
+  <h3><%= link_to post.title, post %></h3>
+  <li><%= link_to image_tag(post.image), post %></li>
+  <li><%= post.content[0..30] %></li>
+  </div>
 <% end %>
