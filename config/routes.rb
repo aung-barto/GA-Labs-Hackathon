@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # get 'home#search'
 
   get '/search' => 'posts#search'
-  get '/location' => 'posts#locations'
 
   resources :category
   resources :posts
