@@ -3,7 +3,8 @@
 <div id="post-info">
   <img src="<%= @post.image %>">  
   <p><%= @post.content %></p>
-  <div id="map-canvas" class="set"></div>
+  <!-- google map -->
+  <div class="set" id="map"></div>
 </div>
 <!-- conditions for location fields -->
 <div id="location-info">
@@ -11,8 +12,8 @@
   <% if @location.location_notes %>
     <p><%= @location.location_notes %></p>
   <% end %>
-  <% if @location.street_address %>
-    <p><%= @location.street_address %>, <%= @location.city %> <%= @location.state %></p>
+  <% if @location.address %>
+    <p><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
   <% end %>
   <% if @location.cross_st1 && @location.cross_st2 %>
     <p>Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>

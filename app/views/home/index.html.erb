@@ -5,21 +5,20 @@
   <%= submit_tag "search" %>
 <% end %>
 
-  <% @categories.each do |cat| %>
-    <ul>
-      <li><%= cat.name %></li>
-      <% post_count = 0 %>
-      <% @posts.each do |post| %>
-        <% if post.category_id == cat.id %>
-          <ul style="list-style-type: none ">
-            <li><h3><%= post.title %></h3></li>
-            <li>Category <%= post.category_id %></li>
-            <li><img src="<%= post.image %>" style="width: 100px; height: auto"></li>
-            <li><%= post.content %></li>
-          </ul><br>
-          <% post_count +=1 %>
-        <% end %>
-      <% break if post_count == 3 %>
+<% @categories.each do |cat| %>
+  <ul style="list-style-type: none ">
+    <li><h3><%= cat.name %></h3></li>
+    <% post_count = 0 %>
+    <% @posts.each do |post| %>
+      <% if post.category_id == cat.id %>
+        <h3><%= link_to post.title, post %></h3>
+        <p>Category <%= post.category_id %></p>
+        <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
+        <p><%= post.content %></p>
+        <br>
+        <% post_count +=1 %>
+      <% end %>
+    <% break if post_count == 3 %>
     <% end %>
   </ul>
 <% end %>
