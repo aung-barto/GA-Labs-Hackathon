@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
+    @posts = Post.all
     @post = Post.find(params[:id])
     @location = Location.find(@post.location_id)
     @category = Category.find(@post.category_id)
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
   def search
     query = params[:name]
     @results = Post.search(query)
+    @locations = Location.find(@results.location_id)
     render "search"
   end
   

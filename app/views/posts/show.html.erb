@@ -26,4 +26,20 @@
   <% end %>
 </div>
 
+<!-- show similar categories -->
+<h3>Posts you might like...</h3>
+<ul style="list-style-type: none ">
+  <% post_count = 0 %>
+  <% @posts.each do |post| %>
+    <h3><%= link_to post.title, post %></h3>
+    <p>Category <%= post.category_id %></p>
+    <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
+    <p><%= post.content %></p>
+    <br>
+    <% post_count +=1 %>
+  <% break if post_count == 3 %>
+  <% end %>
+</ul>
+
+
 

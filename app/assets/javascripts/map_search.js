@@ -9,7 +9,7 @@ function initialize(){
   // grabbing address from location input
   var address = $('#address').html();
   var geocoder = new google.maps.Geocoder();
-  console.log(address);
+  
   geocoder.geocode({ 'address': address}, function(results, status){
 
     if (status == google.maps.GeocoderStatus.OK){
