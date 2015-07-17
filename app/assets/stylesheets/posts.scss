@@ -3,35 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-  margin: 0 100px 0 100px;
+  margin: 0px;
 }
+
+#content{
+  margin: 0 150px 0 150px;
+}
+
 p{
   margin: 8px 0 8px 0;
 }
 .location{
   position: absolute;
-  margin-right: 100px;
+  margin-right: 150px;
   right: 0px;
-
 }
 
 #map {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 250px;
   background-color: #CCC; 
-  
 }
 
-#location-info{
-  
+#location-name{
+  margin: 15px 0 15px 0;
 }
 
-.each-post{
+.rec-post{
   display: inline-block;
   width: 250px;
+  background-color: lightblue;
 }
 #post-content{
-  margin-top: 150px;
+  margin-top: 30px;
   width: 500px;
 }
 
