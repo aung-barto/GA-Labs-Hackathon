@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def search
     query = params[:name]
     @results = Post.search(query)
-    @locations = Location.find(@results.location_id)
+    @locations = Location.all
     render "search"
   end
   

@@ -1,45 +1,49 @@
 <h3><%= @category.name %></h3>
 <h1><%= @post.title %></h1>
-<div id="post-info">
-  <img src="<%= @post.image %>">  
-  <p><%= @post.content %></p>
+<div class="location">
   <!-- google map -->
   <div class="set" id="map"></div>
+  <!-- conditions for location fields -->
+  <div id="location-info">
+    <h2><%= @location.location_name %></h2>
+    <% if @location.location_notes %>
+      <p><%= @location.location_notes %></p>
+    <% end %>
+    <% if @location.address %>
+      <p id="address"><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
+    <% end %>
+    <% if @location.cross_st1 && @location.cross_st2 %>
+      <p>Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
+    <% end %>
+    <% if @location.phone %>
+      <p>Business Phone: <%= @location.phone %></p>
+    <% end %>
+    <% if @location.website %>
+      <p>Website: <%= @location.website %></p>
+    <% end %>
+  </div>
 </div>
-<!-- conditions for location fields -->
-<div id="location-info">
-  <h2><%= @location.location_name %></h2>
-  <% if @location.location_notes %>
-    <p><%= @location.location_notes %></p>
-  <% end %>
-  <% if @location.address %>
-    <p id="address"><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
-  <% end %>
-  <% if @location.cross_st1 && @location.cross_st2 %>
-    <p>Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
-  <% end %>
-  <% if @location.phone %>
-    <p>Business Phone: <%= @location.phone %></p>
-  <% end %>
-  <% if @location.website %>
-    <p>Website: <%= @location.website %></p>
-  <% end %>
+<div id="post-info">
+  <%= image_tag(@post.image, :class => "post-image") %> 
+  <p id="post-content"><%= @post.content %></p>
 </div>
 
 <!-- show similar categories -->
 <h3>Posts you might like...</h3>
-<ul style="list-style-type: none ">
-  <% post_count = 0 %>
-  <% @posts.each do |post| %>
-    <h3><%= link_to post.title, post %></h3>
-    <p>Category <%= post.category_id %></p>
-    <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
-    <p><%= post.content %></p>
-    <br>
-    <% post_count +=1 %>
+<% post_count = 0 %>
+<% @posts.each do |post| %>
+  <div class="each-post">
+    <% if post.id != @post.id %>
+      <h3><%= link_to post.title, post %></h3>
+      <p>Category <%= post.category_id %></p>
+      <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
+      <p><%= post.content[0...50]+"..." %></p>
+    <% end %>
+  </div>
+  <% post_count +=1 %>
   <% break if post_count == 3 %>
-  <% end %>
-</ul>
+<% end %>
+
 
 
 

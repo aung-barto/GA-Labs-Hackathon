@@ -1,8 +1,41 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  margin: 0 100px 0 100px;
+}
+p{
+  margin: 8px 0 8px 0;
+}
+.location{
+  position: absolute;
+  margin-right: 100px;
+  right: 0px;
+
+}
+
 #map {
-  width: 500px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   background-color: #CCC; 
+  
+}
+
+#location-info{
+  
+}
+
+.each-post{
+  display: inline-block;
+  width: 250px;
+}
+#post-content{
+  margin-top: 150px;
+  width: 500px;
+}
+
+.post-image{
+  width: 450px;
+  height: 350px;
 }
