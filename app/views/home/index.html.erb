@@ -1,8 +1,7 @@
-<h1>Trekabilly</h1>
-  <% @categories.each do |cat| %>
-    <ul>
-      <li><%= cat.name %></li>
-        <% post_count = 0 %>
+<% @categories.each do |cat| %>
+  <ul>
+    <li><%= cat.name %></li>
+    <% post_count = 0 %>
       <% @posts.each do |post| %>
         <% if post.category_id == cat.id %>
           <ul style="list-style-type: none ">
@@ -13,7 +12,7 @@
           </ul><br>
           <% post_count +=1 %>
         <% end %>
-          <% break if post_count == 3 %>
-      <% end %>
-    </ul>
-  <% end %>
+      <% break if post_count == 3 %>
+    <% end %>
+  </ul>
+<% end %>

@@ -5,8 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script>
+    function initialize(){
+      var mapCanvas = document.getElementById('map-canvas');
+      var mapOptions = {
+        center: new google.maps.LatLng(40.7903, -73.9597),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 </head>
 <body>
+<h1>Trekabilly</h1>
 <%= yield %>
 
 </body>

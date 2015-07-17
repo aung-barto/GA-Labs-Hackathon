@@ -1,0 +1,28 @@
+<h3><%= @category.name %></h3>
+<h1><%= @post.title %></h1>
+<div id="post-info">
+  <img src="<%= @post.image %>">  
+  <p><%= @post.content %></p>
+  <div id="map-canvas" class="set"></div>
+</div>
+<!-- conditions for location fields -->
+<div id="location-info">
+  <h2><%= @location.location_name %></h2>
+  <% if @location.location_notes %>
+    <p><%= @location.location_notes %></p>
+  <% end %>
+  <% if @location.street_address %>
+    <p><%= @location.street_address %>, <%= @location.city %> <%= @location.state %></p>
+  <% end %>
+  <% if @location.cross_st1 && @location.cross_st2 %>
+    <p>Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
+  <% end %>
+  <% if @location.phone %>
+    <p>Business Phone: <%= @location.phone %></p>
+  <% end %>
+  <% if @location.website %>
+    <p>Website: <%= @location.website %></p>
+  <% end %>
+</div>
+
+

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   #search for home
-  # get 'home#search'
+  get 'search' => 'home#search'
 
   resources :category
   resources :posts
