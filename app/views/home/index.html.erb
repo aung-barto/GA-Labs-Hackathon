@@ -1,7 +1,14 @@
-<% @categories.each do |cat| %>
-  <ul>
-    <li><%= cat.name %></li>
-    <% post_count = 0 %>
+<!-- search form -->
+<%= form_tag '/search', method: 'get' do %>
+  <%= label_tag "search" %>
+  <%= text_field_tag :name %>
+  <%= submit_tag "search" %>
+<% end %>
+
+  <% @categories.each do |cat| %>
+    <ul>
+      <li><%= cat.name %></li>
+      <% post_count = 0 %>
       <% @posts.each do |post| %>
         <% if post.category_id == cat.id %>
           <ul style="list-style-type: none ">
