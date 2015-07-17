@@ -11,9 +11,9 @@
     <% post_count = 0 %>
     <% @posts.each do |post| %>
       <% if post.category_id == cat.id %>
-        <h3><%= post.title %></h3>
+        <h3><%= link_to post.title, post %></h3>
         <p>Category <%= post.category_id %></p>
-        <p><img src="<%= post.image %>" id="posts-image"></p>
+        <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
         <p><%= post.content %></p>
         <br>
         <% post_count +=1 %>
