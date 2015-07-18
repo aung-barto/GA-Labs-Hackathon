@@ -31,9 +31,11 @@
   <% @results.each do |r| %>
     <% if r.location_id == l.id %>
       <div id = 'post'>
-        <%= hidden_field(:l, :address, :value => l.address) %>
-        <%= hidden_field(:l, :city, :value => l.city) %>
-        <%= hidden_field(:l, :location_name, :value => l.location_name) %>
+        <% if (l.address) %>
+          <span style="display: none;"><%= l.address %>, <%= l.city %> <%= l.state %></span>
+        <% else %>
+          <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %> <%= l.state %></span>
+        <% end %>
         <h3><%= link_to r.title, r %></h3>
         <li><%= link_to image_tag(r.image), r %></li>
       </div>

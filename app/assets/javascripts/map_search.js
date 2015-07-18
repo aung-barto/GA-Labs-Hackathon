@@ -9,12 +9,20 @@ var address2 = [];
 
 function initialize(){
    // grabbing address from location input
-  if ($('#l_address').val()){
-    address2.push($('#l_address').val()+ ", " + $('#l_city').val());
-    for(i = 0; i < address2.length; i++){
-      address = address2[i];
-    };
+  
+  // address2.push($('#l_address').val()+ ", " + $('#l_city').val());
+  // for(i = 0; i < address2.length; i++){
+  //   address = address2[i];
+  // };
+
+  $('body').find('span').each(function(){
+    address2.push(this.html());
+    console.log(this.html());
+  });
+  for (i = 0; i < address2.length; i++){
+    address = address2[i];
   };
+  console.log(address);
 
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({ 'address': address}, function(results, status){
@@ -30,6 +38,7 @@ function initialize(){
       map = new google.maps.Map($('#map-canvas')[0], mapOptions);
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location
       });
