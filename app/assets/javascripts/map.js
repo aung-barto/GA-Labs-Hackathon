@@ -4,19 +4,17 @@ $(document).ready(function(){
 
 var map;
 var results;
+var address;
+
 function initialize(){
    // grabbing address from location input
-  var address
-  if $('#address').html()!= undefined {
+  
+  if ($('#address').html()) {
     address = $('#address').html();
   } else {
-    var cross = $('#cross-street').html();
-    address = cross;
-    console.log("cross " + cross);
-    console.log("address " + address);
+    address = $('#cross-streets').html();
   };
 
-  // grabbing address from location input
   var geocoder = new google.maps.Geocoder();
   console.log(address);
   geocoder.geocode({ 'address': address}, function(results, status){

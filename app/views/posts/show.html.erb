@@ -15,12 +15,14 @@
       <% if @location.location_notes %>
         <p><%= @location.location_notes %></p>
       <% end %>
-      <% if @location.address %>
-        <p id="address"><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
-      <% end %>
+      
+      <!-- what kind of address are we using? -->
       <% if @location.cross_st1 && @location.cross_st2 %>
         <p id="cross-streets">Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
+      <% else %>
+        <p id="address"><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
       <% end %>
+
       <% if @location.phone %>
         <p>Business Phone: <%= @location.phone %></p>
       <% end %>

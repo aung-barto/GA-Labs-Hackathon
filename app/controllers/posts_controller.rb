@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @results.each do |r|
       @locations << Location.find(r.location_id)
     end
-    binding.pry
     render "search"
   end
   
