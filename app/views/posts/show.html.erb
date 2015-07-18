@@ -1,3 +1,8 @@
+<head>
+  <!-- Google Map -->
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true" %>
+</head>
+
 <div id="content">
   <h3><%= @category.name %></h3>
   <h1><%= @post.title %></h1>
@@ -14,7 +19,7 @@
         <p id="address"><%= @location.address %>, <%= @location.city %> <%= @location.state %></p>
       <% end %>
       <% if @location.cross_st1 && @location.cross_st2 %>
-        <p>Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
+        <p id="cross-streets">Between: <%= @location.cross_st1 %> and <%= @location.cross_st2 %>, <%= @location.city %> <%= @location.state %></p>
       <% end %>
       <% if @location.phone %>
         <p>Business Phone: <%= @location.phone %></p>

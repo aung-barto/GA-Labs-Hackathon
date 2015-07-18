@@ -5,9 +5,18 @@ $(document).ready(function(){
 var map;
 var results;
 function initialize(){
+   // grabbing address from location input
+  var address
+  if $('#address').html()!= undefined {
+    address = $('#address').html();
+  } else {
+    var cross = $('#cross-street').html();
+    address = cross;
+    console.log("cross " + cross);
+    console.log("address " + address);
+  };
 
   // grabbing address from location input
-  var address = $('#address').html();
   var geocoder = new google.maps.Geocoder();
   console.log(address);
   geocoder.geocode({ 'address': address}, function(results, status){

@@ -13,7 +13,11 @@ class PostsController < ApplicationController
   def search
     query = params[:name]
     @results = Post.search(query)
-    @locations = Location.all
+    @locations = []
+    @results.each do |r|
+      @locations << Location.find(r.location_id)
+    end
+    binding.pry
     render "search"
   end
   
