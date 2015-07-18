@@ -1,9 +1,37 @@
 
-<h1>you hit the search page</h1>
-<div class="each-post">
-  <% @results.each do |post| %>
-    <h3><%= post.title %></h3>
-    <img src="<%= post.image %>" style="width: 100px; height: auto">
-    <%= post.content[0...50]+"..." %>
-  <% end %>
-</div>
+<style>
+	body {
+		padding-left: 40px;
+
+	}
+	li {
+	/*	width: 33%;
+		float: left;*/
+		list-style-type: none;
+	}
+	#post {
+		width: 33%;
+		float: left;
+	}
+	img {
+		width: 200px;
+		height: 150px;
+	}
+
+</style>
+
+
+<%= form_tag '/search', method: 'get' do %>
+  <%= label_tag "search" %>
+  <%= text_field_tag :name %>
+  <%= submit_tag "search" %>
+<% end %>
+<div class="set" id="map"></div>
+
+<% @results.each do |post| %>
+<div id = 'post'>
+  <h3><%= link_to post.title, post %></h3>
+  <li><%= link_to image_tag(post.image), post %></li>
+  <li><%= post.content[0..30] %></li>
+  </div>
+<% end %>
