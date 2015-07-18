@@ -1,14 +1,9 @@
-<head>
-  <!-- Google Map -->
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true" %>
-</head>
-
 <div id="content">
   <h3><%= @category.name %></h3>
   <h1><%= @post.title %></h1>
   <div class="location">
     <!-- google map -->
-    <div class="set" id="map"></div>
+    <div class="set" id="map" style="width: 400px; height: 250px; background-color: #CCC"></div>
     <!-- conditions for location fields -->
     <div id="location-info">
       <h2 id="location-name"><%= @location.location_name %></h2>

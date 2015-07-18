@@ -1,7 +1,4 @@
-<head>
-  <!-- Google Map -->
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true" %>
-</head>
+
 <style>
 	body {
 		padding-left: 40px;
@@ -29,12 +26,17 @@
   <%= text_field_tag :name %>
   <%= submit_tag "search" %>
 <% end %>
-<div class="set" id="map"></div>
-
-<% @results.each do |post| %>
-<div id = 'post'>
-  <h3><%= link_to post.title, post %></h3>
-  <li><%= link_to image_tag(post.image), post %></li>
-  <li><%= post.content[0..30] %></li>
-  </div>
+<div class="set" id="map-canvas" style="width: 100%; height: 400px; background-color: #CCC "></div>
+<% @locations.each do |l| %>
+  <% @results.each do |r| %>
+    <% if r.location_id == l.id %>
+      <div id = 'post'>
+        <%= hidden_field(:l, :address, :value => l.address) %>
+        <%= hidden_field(:l, :city, :value => l.city) %>
+        <%= hidden_field(:l, :location_name, :value => l.location_name) %>
+        <h3><%= link_to r.title, r %></h3>
+        <li><%= link_to image_tag(r.image), r %></li>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

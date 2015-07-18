@@ -1,0 +1,13 @@
+<div style="margin-left: 200px;">
+  <% @categories.each do |c| %>
+    <% @posts.each do |p| %>
+      <% if p.category_id == c.id %>
+        <div class="group">
+          <h4><%= p.title %></h4>
+          <p style="margin-top: 8px;"><%= c.name %></p>
+          <%= image_tag(p.image, class:'fake-posts') %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
