@@ -19,13 +19,14 @@
 	}
 
 </style>
-<h1>you hit the search page</h1>
+
 
 <%= form_tag '/search', method: 'get' do %>
   <%= label_tag "search" %>
   <%= text_field_tag :name %>
   <%= submit_tag "search" %>
 <% end %>
+<div class="set" id="map"></div>
 
 <% @results.each do |post| %>
 <div id = 'post'>
