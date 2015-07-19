@@ -14,12 +14,16 @@ class PostsController < ApplicationController
   
   def search
     query = params[:name]
-    @results = Post.search(query)
+    @results = Post.search(query).limit(10)
     @locations = []
     @results.each do |r|
       @locations << Location.find(r.location_id)
     end
     render "search"
   end
-  
+
+  def to_json
+    
+  end
+
 end

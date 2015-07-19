@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
       Post.joins{category}.where{(category.name.like query)}
     else
       search_condition = "%" + query + "%"
-      Post.where{(title =~ search_condition) | (content =~ search_condition)}
+      @posts = Post.where{(title =~ search_condition) | (content =~ search_condition)}
     end
   end
 

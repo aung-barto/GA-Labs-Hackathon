@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # get 'home#search'
 
   get '/search' => 'posts#search'
+  get '/to_json' => 'posts#to_json'
 
   resources :category
   resources :posts

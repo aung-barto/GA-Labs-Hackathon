@@ -1,59 +1,167 @@
-$(document).ready(function(){
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+
+//= require_tree .
+
+var markersArray = [];
+var NY_LAT = 40.735189;
+var NY_LNG = -73.991829;
+var QUERY_DELAY = 400;
+var inactive = false;
+
+$(document).ready(function() {
+  // initialize the map on load
   initialize();
 });
 
-var map;
-var results;
-var address;
-var address2 = [];
-var latLngs = [] 
-function initialize(){
-   // grabbing address from location input
-  
-  // address2.push($('#l_address').val()+ ", " + $('#l_city').val());
-  // for(i = 0; i < address2.length; i++){
-  //   address = address2[i];
-  // };
+/**
+ * Initializes the map and some events on page load
+ */
+var initialize = function() {
+  // Define some options for the map
+  var mapOptions = {
+    center: new google.maps.LatLng(NY_LAT, NY_LNG),
+    zoom: 16,
+
+    // hide controls
+    panControl: true,
+    streetViewControl: true,
+
+    // reconfigure the zoom controls
+    zoomControl: true,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_BOTTOM,
+      style: google.maps.ZoomControlStyle.SMALL
+    }
+  };
+  // create a new Google map with the options in the map element
+   map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
   $('body').find('span').each(function(){
-    address2.push(this.innerHTML);
+    var something = this.innerHTML.split(",");
+    var address = {address: [something[0]], city: something[1]}
+    var title = something[2]
+    geocode_address(map, title, address)
   });
-  
+}
+
+/**
+ * Geocode the address from the business and drop a marker on it's
+ * location on the map
+ *
+ * param: map - the Google map object to drop a marker on
+ * param: name - the name of the business, used for when you hover
+ *               over the dropped marker
+ * param: location_object - an object of the businesses address
+ */
+var geocode_address = function(map, name, location_object) {
   var geocoder = new google.maps.Geocoder();
-  for (i = 0; i < address2.length; i++){
-    address = address2[i];
-    console.log(address);
-    geocoder.geocode({ 'address': address}, function(results, status){
-      latLngs.push(results[0].geometry.location);
-    });
-  };
 
+  var address = [
+    location_object['address'][0],
+    location_object['city'],
+    // location_object['country_code']
+  ].join(', ');
+  console.log("this is the outterscoped address "+ address);
 
-if (latLngs.length > 200){
-  // var geocoder = new google.maps.Geocoder();
-  // geocoder.geocode({ 'address': address}, function(results, status){
+  // geocode the address and get the lat/lng
+  geocoder.geocode({address: address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
 
-    if (status == google.maps.GeocoderStatus.OK){
-      for(j = 0; j< latLngs.length; j++){
-    var mapOptions = {
-      // use current location as the center
-        center: new google.maps.LatLng(latLngs[j]),
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+      // create a marker and drop it on the name on the geocoded location
+      var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        map: map,
+        position: results[0].geometry.location,
+        title: name
+      });
+      
+      // console.log(position);
 
-        map = new google.maps.Map($('#map-canvas')[0], mapOptions);
-        map.setCenter(results[0].geometry.location);
-
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          map: map,
-          position: latLngs[j]
-        });
-      }
+      // save the marker object so we can delete it later
+      markersArray.push(marker);
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+      console.log("Geocode was not successful for the following reason: " + status);
     }
-  // });
-}
-}
+  });
+};
+
+// var address = {address: ["140 tenth street"], city: "New York", country_code: 001}
+// geocode_address(map, "fritzyz", address)
+/**
+ * Remove all of the markers from the map by setting them
+ * to null
+ */
+var clearMarkers = function() {
+  markersArray.forEach(function(marker) {
+    marker.setMap(null);
+  });
+
+  markersArray = [];
+};
+
+/**
+ * Bind and setup search control for the map
+ *
+ * param: map - the Google map object
+ */
+// var bind_controls = function(map) {
+//   // get the container for the search control and bind and event to it on submit
+//   var controlContainer = $('#control_container')[0];
+//   google.maps.event.addDomListener(controlContainer, 'submit', function(e) {
+//     e.preventDefault();
+//     search(map);
+//   });
+
+//   // get the search button and bind a click event to it for searching
+//   var searchButton = $('#map_search_submit')[0];
+//   google.maps.event.addDomListener(searchButton, 'click', function(e) {
+//     e.preventDefault();
+//     search(map);
+//   });
+
+//   // push the search controls onto the map
+//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlContainer);
+// }
+
+/**
+ * Makes a post request to the server with the search term and
+ * populates the map with the response businesses
+ *
+ * param: map - the Google map object
+ */
+// var search = function(map) {
+//   var searchTerm = $('#map_search input[type=text]').val();
+
+//   if (inactive === true) { return };
+
+//   // post to the search with the search term, take the response data
+//   // and process it
+//   $.post('/search', { term: searchTerm }, function(data) {
+//     inactive = true;
+
+//     // do some clean up
+//     $('#results').show();
+//     $('#results').empty();
+//     clearMarkers();
+
+//     // iterate through each business in the response capture the data
+//     // within a closure.
+//     data['businesses'].forEach(function(business, index) {
+//       capture(index, map, business);
+//     });
+//   });
+// };
