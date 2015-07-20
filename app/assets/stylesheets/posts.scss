@@ -23,8 +23,8 @@ p{
   height: auto;
 }
 
-/*#map {
-  width: 400px;
+#map {
+  width: 100%;
   height: 250px;
   background-color: #CCC; 
 }
@@ -32,7 +32,7 @@ p{
   width: 100%;
   height: 400px;
   background-color: #CCC; 
-}*/
+}
 
 
 #location-name{
@@ -48,6 +48,8 @@ p{
 #post-content{
   margin-top: 30px;
   width: 500px;
+  height: 230px;
+  overflow: scroll;
 }
 
 .post-image{
