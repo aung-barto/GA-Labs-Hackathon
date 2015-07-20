@@ -15,12 +15,12 @@
  */
 
 
-#map{
+div.set#map{
   width: 100%;
   height: 250px;
   background-color: #CCC; 
 }
-#map-canvas{
+div.set#map-canvas{
   width: 100%;
   height: 250px;
   background-color: #CCC; 
