@@ -35,11 +35,11 @@
   <h3>Posts you might like...</h3>
   <% post_count = 0 %>
   <% @posts.each do |post| %>
-    <div class="rec-post">
+    <div class="recommend-post">
       <% if post.id != @post.id %>
         <h3><%= link_to post.title, post %></h3>
         <p>Category <%= post.category_id %></p>
-        <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
+        <p><%= link_to image_tag(post.image, class:'posts-image results-image'), post %></p>
         <p><%= post.content[0...50]+"..." %></p>
       <% else %>
         <% break %>
@@ -49,6 +49,54 @@
     <% break if post_count == 3 %>
   <% end %>
 </div>
+<script type="text/javascript">
+  $('body').ready(function(){
+  if ($('#map')){
+    initialize();
+
+    var results;
+    var address;
+    var address2 = [];
+
+    function initialize(){
+       // grabbing address from location input
+      if ($('#address').html()) {
+        address = $('#address').html();
+      } else if ($('#cross-streets').html()){
+        address = $('#cross-streets').html();
+      } else if ($('#l_address').val()){
+        address2.push($('#l_address').val()+ ", " + $('#l_city').val());
+        for(i = 0; i < address2.length; i++){
+          address = address2[i];
+        };
+      };
+
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ 'address': address}, function(results, status){
+
+        if (status == google.maps.GeocoderStatus.OK){
+        var mapOptions = {
+          // use current location as the center
+          center: new google.maps.LatLng(results[0].geometry.location),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+
+          var map = new google.maps.Map($('#map')[0], mapOptions);
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          console.log("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    } 
+  }
+});
+</script>
+
 
 
 

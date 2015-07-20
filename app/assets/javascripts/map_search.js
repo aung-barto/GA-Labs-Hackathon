@@ -23,95 +23,98 @@ var QUERY_DELAY = 400;
 var inactive = false;
 
 $(document).ready(function() {
-  // initialize the map on load
-  initialize();
-});
+  if ($('#map-canvas')){
+    // initialize the map on load
+    manyMaps();
 
-/**
- * Initializes the map and some events on page load
- */
-var initialize = function() {
-  // Define some options for the map
-  var mapOptions = {
-    center: new google.maps.LatLng(NY_LAT, NY_LNG),
-    zoom: 16,
+  /**
+   * Initializes the map and some events on page load
+   */
+   function manyMaps() {
+    // Define some options for the map
+    var mapOptions = {
+      center: new google.maps.LatLng(NY_LAT, NY_LNG),
+      zoom: 16,
 
-    // hide controls
-    panControl: true,
-    streetViewControl: true,
+      // hide controls
+      panControl: true,
+      streetViewControl: true,
 
-    // reconfigure the zoom controls
-    zoomControl: true,
-    zoomControlOptions: {
-      position: google.maps.ControlPosition.RIGHT_BOTTOM,
-      style: google.maps.ZoomControlStyle.SMALL
-    }
-  };
-  // create a new Google map with the options in the map element
-   map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+      // reconfigure the zoom controls
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_BOTTOM,
+        style: google.maps.ZoomControlStyle.SMALL
+      }
+    };
+    // create a new Google map with the options in the map element
+     map = new google.maps.Map($('#map-canvas')[0], mapOptions);
 
-  $('body').find('span').each(function(){
-    var something = this.innerHTML.split(",");
-    var address = {address: [something[0]], city: something[1]}
-    var title = something[2]
-    geocode_address(map, title, address)
-  });
-}
-
-/**
- * Geocode the address from the business and drop a marker on it's
- * location on the map
- *
- * param: map - the Google map object to drop a marker on
- * param: name - the name of the business, used for when you hover
- *               over the dropped marker
- * param: location_object - an object of the businesses address
- */
-var geocode_address = function(map, name, location_object) {
-  var geocoder = new google.maps.Geocoder();
-
-  var address = [
-    location_object['address'][0],
-    location_object['city'],
-    // location_object['country_code']
-  ].join(', ');
-  console.log("this is the outterscoped address "+ address);
-
-  // geocode the address and get the lat/lng
-  geocoder.geocode({address: address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-
-      // create a marker and drop it on the name on the geocoded location
-      var marker = new google.maps.Marker({
-        animation: google.maps.Animation.DROP,
-        map: map,
-        position: results[0].geometry.location,
-        title: name
+      var classa = $('body').find('span').each(function(){
+        var addArray = this.innerHTML.split(",");
+        var addObj = {address: [addArray[0]], city: addArray[1]};
+        var title = addArray[2];
+        geocode_address(map, title, addObj);
       });
-      
-      // console.log(position);
 
-      // save the marker object so we can delete it later
-      markersArray.push(marker);
-    } else {
-      console.log("Geocode was not successful for the following reason: " + status);
-    }
-  });
-};
+    };
 
-// var address = {address: ["140 tenth street"], city: "New York", country_code: 001}
-// geocode_address(map, "fritzyz", address)
-/**
- * Remove all of the markers from the map by setting them
- * to null
- */
-var clearMarkers = function() {
-  markersArray.forEach(function(marker) {
-    marker.setMap(null);
-  });
 
-  markersArray = [];
-};
+  /**
+   * Geocode the address from the business and drop a marker on it's
+   * location on the map
+   *
+   * param: map - the Google map object to drop a marker on
+   * param: name - the name of the business, used for when you hover
+   *               over the dropped marker
+   * param: location_object - an object of the businesses address
+   */
+  function geocode_address(map, name, location_object) {
+    var geocoder = new google.maps.Geocoder();
+
+    var address = [
+      location_object['address'][0],
+      location_object['city'],
+      // location_object['country_code']
+    ].join(', ');
+    console.log("this is the outterscoped address "+ address);
+
+    // geocode the address and get the lat/lng
+    geocoder.geocode({address: address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+
+        // create a marker and drop it on the name on the geocoded location
+        var marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+          map: map,
+          position: results[0].geometry.location,
+          title: name
+        });
+        // console.log(position);
+
+        // save the marker object so we can delete it later
+        markersArray.push(marker);
+      } else {
+        console.log("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
+
+  // var address = {address: ["140 tenth street"], city: "New York", country_code: 001}
+  // geocode_address(map, "fritzyz", address)
+  /**
+   * Remove all of the markers from the map by setting them
+   * to null
+   */
+    function clearMarkers() {
+      markersArray.forEach(function(marker) {
+        marker.setMap(null);
+      });
+
+      markersArray = [];
+    };
+  }
+});
 
 /**
  * Bind and setup search control for the map

@@ -22,6 +22,7 @@ p{
   width: 200px;
   height: auto;
 }
+
 /*#map {
   width: 400px;
   height: 250px;
@@ -32,26 +33,35 @@ p{
   height: 400px;
   background-color: #CCC; 
 }*/
-.group{
-  display: inline-block;
-  width: 350px;
-}
+
 
 #location-name{
   margin: 15px 0 15px 0;
 }
 
-.rec-post{
+.recommend-post{
   display: inline-block;
   width: 250px;
   background-color: lightblue;
 }
+
 #post-content{
   margin-top: 30px;
   width: 500px;
 }
 
 .post-image{
+  width: 450px;
+  height: 350px;
+}
+
+/*search results page*/
+.post-group{
+  display: inline-block;
+  width: 350px;
+}
+
+img.results-image{
   width: 450px;
   height: 350px;
 }

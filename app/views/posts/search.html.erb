@@ -1,50 +1,24 @@
-
-<style>
-	body {
-		padding-left: 40px;
-
-	}
-	li {
-	/*	width: 33%;
-		float: left;*/
-		list-style-type: none;
-	}
-	#post {
-		width: 33%;
-		float: left;
-	}
-	img {
-		width: 200px;
-		height: 150px;
-	}
-
-</style>
-
-
 <%= form_tag '/search', method: 'get' do %>
   <%= label_tag "search" %>
   <%= text_field_tag :name %>
   <%= submit_tag "search" %>
 <% end %>
 <div class="set" id="map-canvas" style="width: 100%; height: 400px; background-color: #CCC "></div>
-<% @locations.each do |l| %>
-<% count = 0 %>
-  <% @results.each do |r| %>
-    <% if r.location_id == l.id %>
-      <div id = 'post'>
-        <% if (l.address) %>
-          <span style="display: none;"><%= l.address %>, <%= l.city %>, <%= l.location_name %></span>
-        <% else %>
-          <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %>, <%= l.location_name %></span>
-        <% end %>
-        <h3><%= link_to r.title, r %></h3>
-        <li><%= link_to image_tag(r.image), r %></li>
-      </div>
+
+<div class="post-group">
+  <% @locations.each do |l| %>
+    <% if l.address %>
+      <span style="display: none;"><%= l.address %>, <%= l.city %>, <%= l.location_name %></span>
+    <% else %>
+      <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %>, <%= l.location_name %></span>
     <% end %>
-      <% count +=1 %>
-    <% break if count == 10 %>
   <% end %>
-<% end %>
+  <% @results.each do |r| %>
+    <h3><%= link_to r.title, r, class:'results-image' %></h3>
+    <li><%= link_to image_tag(r.image, class:'results-image'), r %></li>
+  <% end %>
+</div>
+
 
 
 
