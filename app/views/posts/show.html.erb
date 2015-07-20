@@ -1,5 +1,7 @@
 <header>
 <!-- logo -->
+<%= link_to "Home", root_path %>
+<%= link_to "Previous Page", :back %>
 <!-- search -->
   <%= form_tag '/search', method: 'get' do %>
     <%= label_tag "search" %>
