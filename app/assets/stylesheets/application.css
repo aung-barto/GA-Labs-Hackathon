@@ -17,10 +17,14 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100, 300, 400, 700, 900 );
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
-h1 {font-family: 'Lato'; font-size: 1.5em; font-weight: 300; }
-h2 {font-family: 'Lato'; font-size: 1em; font-weight: 400;}
-h2 {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
+h1.headline {font-family: 'Lato'; font-size: 3em; font-weight: 300; }
+h2.sub-head {font-family: 'Lato'; font-size: 1.75em; font-weight: 400;}
+h3 {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
+
+.center {
+  text-align: center;
+}
 
 div.set#map{
   width: 100%;
@@ -31,4 +35,23 @@ div.set#map-canvas{
   width: 100%;
   height: 250px;
   background-color: #CCC; 
+}
+
+.hero {
+  position: absolute;
+  z-index: -1;
+  margin-top: -20px;
+  /*background-image: url(<%= asset_path 'heroshot.jpg' %>);*/
+  /*width: 768 px;*/
+  /*height: 264 px;*/
+}
+
+.logo {
+  /*background-image: url(<%= asset_path 'logo.png'%>);*/
+  z-index: 3;
+  position:absolute;
+}
+
+.hero-search {
+  z-index: 2;
 }
