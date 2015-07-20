@@ -4,18 +4,22 @@
   <%= submit_tag "search" %>
 <% end %>
 <div class="set" id="map-canvas" style="width: 100%; height: 400px; background-color: #CCC "></div>
-
 <div class="post-group">
+<% count = 0 %>
   <% @locations.each do |l| %>
+    <% count += 1 %>
     <% if l.address %>
       <span style="display: none;"><%= l.address %>, <%= l.city %>, <%= l.location_name %></span>
     <% else %>
       <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %>, <%= l.location_name %></span>
     <% end %>
+    <% break if count == 10 %>
   <% end %>
   <% @results.each do |r| %>
+    <% count += 1 %>
     <h3><%= link_to r.title, r, class:'results-image' %></h3>
     <li><%= link_to image_tag(r.image, class:'results-image'), r %></li>
+    <% break if count == 10 %>
   <% end %>
 </div>
 <script type="text/javascript">
