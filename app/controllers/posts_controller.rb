@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   
   def search
     query = params[:name]
-    @results = Post.search(query).limit(10)
+    @results = Post.search(query).first(10)
 
     @locations = []
     @results.each do |r|
