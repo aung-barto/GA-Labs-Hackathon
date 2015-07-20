@@ -17,9 +17,9 @@
 <div class="post-group">
   <% @locations.each do |l| %>
     <% if l.address %>
-      <span style="display: none;"><%= l.address %>, <%= l.city %>, <%= l.location_name %></span>
+      <span style="display: none;"><%= l.address %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
     <% else %>
-      <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %>, <%= l.location_name %></span>
+      <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
     <% end %>
   <% end %>
   <% @results.each do |r| %>
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
     var address = [
       location_object['address'][0],
-      location_object['city'],
+      location_object['city']
       // location_object['country_code']
     ].join(', ');
     console.log("this is the outterscoped address "+ address);
