@@ -21,6 +21,7 @@ h1.headline {font-family: 'Lato'; font-size: 3em; font-weight: 300; }
 h2.sub-head {font-family: 'Lato'; font-size: 1.75em; font-weight: 400;}
 h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
+p.indexp  {font-family: 'PT Sans'; font-size: 1.5em; font-weight:400;}
 
 .center {
   text-align: center;
@@ -113,11 +114,7 @@ a.title{
   /*right: 190px;*/
 }
 
-.test {
-  background-image: url(/assets/images/heroshot-xl.jpg);
-  /*background-image: url(http://www.example.com/bck.png);*/
-  background-color: #f00;
-  height: 600px;
-  width: 700px;
-
+.index-block {
+  padding-top: 4.5%;
+  /*margin: 10%;*/
 }
