@@ -83,6 +83,7 @@ a.title{
 
 .card .card-content{
   padding: 10px 10px 10px 10px;
+}
 
 .hero {
   position: absolute;
@@ -97,13 +98,26 @@ a.title{
   /*background-image: url(<%= asset_path 'logo.png'%>);*/
   z-index: 9999;
   
-  position:absolute;
+  position: absolute;
 }
 
 .hero-search {
-  padding-top: 25%;
+  padding-top: 23%;
   z-index: 2;
-  background-image: url(<%= asset_path 'heroshot.jpg' %>);
+  /*background-image: url(/assets/heroshot-xl.jpg);*/
+  /*background-size: 839px 388px;*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: url(<%= asset_path 'heroshot.jpg' %>);*/
   /*position: absolute;*/
   /*bottom: 380px;*/
   /*right: 190px;*/
+}
+
+.test {
+  background-image: url(/assets/images/heroshot-xl.jpg);
+  /*background-image: url(http://www.example.com/bck.png);*/
+  background-color: #f00;
+  height: 600px;
+  width: 700px;
+
+}

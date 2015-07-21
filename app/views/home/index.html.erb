@@ -4,9 +4,8 @@
     <!-- <div class="col lg"> -->
       <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
   </div>  
-
-  <div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%>
-
+  <div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%></div>
+<!--   <div class=""> -->
     <div class="container hero-search">
       <div class="input-field grey lighten-5">
           <!-- search form -->
@@ -18,14 +17,17 @@
         </form>
       </div>
     </div>
-  </div>
-  
-    <h1 class="headline col s12 center">Why Trekabilly?</h1>
-    <p class="center">Our community has both locals and tourists to give you the best of both worlds.
-Our community has both locals and tourists to give.</p>
-    <h2 class="sub-head center">Browse some of our categories</h2> 
-
+<!--   </div> -->
+    <div>
+      <h1 class="headline col s12 center">Why Trekabilly?</h1>
+      <p class="center">Our community has both locals and tourists to give you the best of both worlds.
+  Our community has both locals and tourists to give.</p>
+      <h2 class="sub-head center">Browse some of our categories</h2> 
+    </div>
   <div> 
+
+    
+  
 
     <% @categories.each do |cat| %>
       <ul style="list-style-type: none ">
