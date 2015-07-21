@@ -1,24 +1,48 @@
-<!-- search form -->
-<%= form_tag '/search', method: 'get' do %>
-  <%= label_tag "search" %>
-  <%= text_field_tag :name %>
-  <%= submit_tag "search" %>
-<% end %>
+<!-- hero shot -->
+<!-- <div class="container"> -->
+  <div class="row">
+    <!-- <div class="col lg"> -->
+      <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
+  </div>  
 
-<% @categories.each do |cat| %>
-  <ul style="list-style-type: none ">
-    <li><h3><%= cat.name %></h3></li>
-    <% post_count = 0 %>
-    <% @posts.each do |post| %>
-      <% if post.category_id == cat.id %>
-        <h3><%= link_to post.title, post %></h3>
-        <p>Category <%= post.category_id %></p>
-        <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
-        <p><%= post.content[0...50]+"..." %></p>
-        <br>
-        <% post_count +=1 %>
-      <% end %>
-    <% break if post_count == 3 %>
+  <div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%>
+
+    <div class="container hero-search">
+      <div class="input-field grey lighten-5">
+          <!-- search form -->
+          <form action="/search" accept-charset="UTF-8" method="get">
+          <input name="utf8" type="hidden" value="✓">
+          <!-- <label for="search">search</label> -->
+          <input type="text" name="name" id="name">
+          <!-- <input type="submit" name="commit" value="search"> -->
+        </form>
+      </div>
+    </div>
+  </div>
+  
+    <h1 class="headline col s12 center">Why Trekabilly?</h1>
+    <p class="center">Our community has both locals and tourists to give you the best of both worlds.
+Our community has both locals and tourists to give.</p>
+    <h2 class="sub-head center">Browse some of our categories</h2> 
+
+  <div> 
+
+    <% @categories.each do |cat| %>
+      <ul style="list-style-type: none ">
+        <li><h3><%= cat.name %></h3></li>
+        <% post_count = 0 %>
+        <% @posts.each do |post| %>
+          <% if post.category_id == cat.id %>
+            <h3><%= link_to post.title, post %></h3>
+            <p>Category <%= post.category_id %></p>
+            <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
+            <p><%= post.content[0...50]+"..." %></p>
+            <br>
+            <% post_count +=1 %>
+          <% end %>
+        <% break if post_count == 3 %>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  
+<!-- </div> -->

@@ -22,6 +22,10 @@ h2.sub-head {font-family: 'Lato'; font-size: 1.75em; font-weight: 400;}
 h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
 
+.center {
+  text-align: center;
+}
+
 div.set#map{
   width: 100%;
   height: 250px;
@@ -79,4 +83,27 @@ a.title{
 
 .card .card-content{
   padding: 10px 10px 10px 10px;
+
+.hero {
+  position: absolute;
+  z-index: -100;
+  margin-top: -20px;
+  
+  /*width: 768 px;*/
+  /*height: 264 px;*/
 }
+
+.logo {
+  /*background-image: url(<%= asset_path 'logo.png'%>);*/
+  z-index: 9999;
+  
+  position:absolute;
+}
+
+.hero-search {
+  padding-top: 25%;
+  z-index: 2;
+  background-image: url(<%= asset_path 'heroshot.jpg' %>);
+  /*position: absolute;*/
+  /*bottom: 380px;*/
+  /*right: 190px;*/
