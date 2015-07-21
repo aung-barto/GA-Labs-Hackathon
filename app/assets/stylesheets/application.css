@@ -39,19 +39,25 @@ div.set#map-canvas{
 
 .hero {
   position: absolute;
-  z-index: -1;
+  z-index: -100;
   margin-top: -20px;
-  /*background-image: url(<%= asset_path 'heroshot.jpg' %>);*/
+  
   /*width: 768 px;*/
   /*height: 264 px;*/
 }
 
 .logo {
   /*background-image: url(<%= asset_path 'logo.png'%>);*/
-  z-index: 3;
+  z-index: 9999;
+  
   position:absolute;
 }
 
 .hero-search {
+  padding-top: 25%;
   z-index: 2;
+  background-image: url(<%= asset_path 'heroshot.jpg' %>);
+  /*position: absolute;*/
+  /*bottom: 380px;*/
+  /*right: 190px;*/
 }

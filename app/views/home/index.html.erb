@@ -3,24 +3,22 @@
   <div class="row">
     <!-- <div class="col lg"> -->
       <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
-    <!-- </div>   -->
-  </div>
+  </div>  
+
   <div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%>
 
     <div class="container hero-search">
-      <div class="">
+      <div class="input-field grey lighten-5">
           <!-- search form -->
-          <%= form_tag '/search', method: 'get' do %>
-            <%= label_tag "search" %>
-            <%= text_field_tag :name %>
-            <%= submit_tag "search" %>
-          <% end %>
+          <form action="/search" accept-charset="UTF-8" method="get">
+          <input name="utf8" type="hidden" value="✓">
+          <!-- <label for="search">search</label> -->
+          <input type="text" name="name" id="name">
+          <!-- <input type="submit" name="commit" value="search"> -->
+        </form>
       </div>
     </div>
   </div>
-    
- 
-
   
     <h1 class="headline col s12 center">Why Trekabilly?</h1>
     <p class="center">Our community has both locals and tourists to give you the best of both worlds.
