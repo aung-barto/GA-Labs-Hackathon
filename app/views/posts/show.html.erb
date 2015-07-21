@@ -1,23 +1,36 @@
-<header>
-<!-- logo -->
-<%= link_to "Home", root_path %>
-<%= link_to "Previous Page", :back %>
-<!-- search -->
-  <%= form_tag '/search', method: 'get' do %>
-    <%= label_tag "search" %>
-    <%= text_field_tag :name %>
-    <%= submit_tag "search" %>
-  <% end %>
-</header>
+<div class="row">
+  <!-- logo -->
+  <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+  <!-- search -->
+  <div class="container search col l2 offset-l10">
+    <%= link_to "Previous Page", :back, class:'col l6' %>
+    <div class="input-field grey lighten-5 nav-wrapper">
+      <div class="input-field">
+        <!-- search form -->
+        <form action="/search" accept-charset="UTF-8" method="get">
+        <input name="utf8" type="hidden" value="✓">
+        <!-- <label for="search">search</label> -->
+        <input type="text" name="name" id="search">
+        <!-- <input type="submit" name="commit" value="search"> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- google map -->
-<div class="set" id="map"></div>
-<h1><%= @post.title %></h1>
-<h3>In <%= @category.name %> category</h3>
-<div class="location">
+<div class="row">
+  <!-- google map -->
+  <div class="set col l12" id="map"></div>
+  <div class="col s12 l12 offset-l1">
+    <h1 class='headline'><%= @post.title %></h1>
+    <h2 class='sub-head'>From <%= @category.name.capitalize %> Category</h2>
+  </div>
+</div>
+<div class="post-info row">
+  <%= image_tag(@post.image, :class => 'post-image col s12 l5 offset-l1') %> 
   <!-- conditions for location fields -->
-  <div id="location-info">
-    <h2 id="location-name"><%= @location.location_name %></h2>
+  <div id="location-info" class="col s12 l5">
+    <h2 class="sub-head" id="location-name"><%= @location.location_name %></h2>
     <% if @location.location_notes %>
       <p><%= @location.location_notes %></p>
     <% end %>
@@ -36,27 +49,34 @@
     <% if @location.website %>
       <p>Website: <%= @location.website %></p>
     <% end %>
-    <p id="post-content"><%= @post.content %></p>
+    <p id="post-content" class="col"><%= @post.content %></p>
   </div>
-</div>
-<div id="post-info">
-  <%= image_tag(@post.image, :class => "post-image") %> 
 </div>
 
+
 <!-- show similar categories -->
-<h3>You might also like...</h3>
-<% @posts.each do |post| %>
-  <div class="recommend-post">
-    <% if post.category_id == @category.id %>
-      <h3><%= link_to post.title, post %></h3>
-      <p>Category <%= post.category_id %></p>
-      <p><%= link_to image_tag(post.image, class:'posts-image results-image'), post %></p>
-      <p><%= post.content[0...50]+"..." %></p>
-    <% else %>
-      <% break %>
+<div class="row">
+  <div class="col l10 offset-l1">
+  <h2 class="sub-head col s10 l11 offset-s1">You might also like...</h2>
+    <% @posts.each do |post| %>
+      <% if post.category_id == @category.id %>
+        <div class="recommend-post col s10 m4 l3 offset-s1">
+          <div class="card">
+            <div class="card-image">
+              <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
+              <span class="card-title"><%= link_to post.title, post, class:'title' %>
+              </span>
+            </div>
+            <div class="card-content">
+            <p class="p"><%= post.content[0...50]+"..." %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<% end %>
+</div>
+
 
 <script type="text/javascript">
   $('body').ready(function(){
@@ -88,6 +108,7 @@
           // use current location as the center
           center: new google.maps.LatLng(results[0].geometry.location),
           zoom: 15,
+          styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
           mapTypeId: google.maps.MapTypeId.ROADMAP
           };
 

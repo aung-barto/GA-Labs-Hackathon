@@ -10,17 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ 
  */
 
 @import url(http://fonts.googleapis.com/css?family=Lato:100, 300, 400, 700, 900 );
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
-h1 {font-family: 'Lato'; font-size: 1.5em; font-weight: 300; }
-h2 {font-family: 'Lato'; font-size: 1em; font-weight: 400;}
-h2 {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
-p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
+h1.headline {font-family: 'Lato'; font-size: 3em; font-weight: 300; }
+h2.sub-head {font-family: 'Lato'; font-size: 1.75em; font-weight: 400;}
+h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
+p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
 
 div.set#map{
   width: 100%;
@@ -31,4 +31,52 @@ div.set#map-canvas{
   width: 100%;
   height: 250px;
   background-color: #CCC; 
+}
+
+.search{
+  background-color: blue;
+}
+
+.previous{
+  background-color: yellow;
+}
+
+.post-info.row{
+  height: 355px;
+}
+
+#post-content{
+  overflow: scroll;
+  margin: 0 0 15px 0;
+  padding: 0 0 0 0;
+  height: 262px;
+}
+
+#location-name{
+  margin-top: 0px;
+}
+.card{
+  width: 95%;
+}
+
+.card-title{
+  padding: 5px 5px 5px 5px;
+}
+
+.posts-image{
+  height: 150px;
+  margin-bottom: 20px
+}
+.card .card-image img{
+  height: 150px;
+}
+
+a.title{
+  color: white;
+  font-size: 1.2rem;
+  line-height: .75rem;
+}
+
+.card .card-content{
+  padding: 10px 10px 10px 10px;
 }
