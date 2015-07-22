@@ -19,6 +19,7 @@
   </nav>
 </div>
 
+
 <div class="row">
   <!-- google map -->
   <div class="set col l12" id="map"></div>
@@ -58,10 +59,10 @@
 <!-- show similar categories -->
 <div class="row">
   <div class="col l10 offset-l1">
-  <h2 class="sub-head col s10 l11 offset-s1">You might also like...</h2>
+  <h2 class="sub-head col s10 m10 l11 offset-s1 offset-m1">You might also like...</h2>
     <% @posts.each do |post| %>
       <% if post.category_id == @category.id %>
-        <div class="recommend-post col s10 m4 l3 offset-s1">
+        <div class="recommend-post col s10 m4 l3 offset-s1 offset-m1">
           <div class="card">
             <div class="card-image">
               <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
@@ -77,6 +78,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 <script type="text/javascript">
