@@ -1,22 +1,24 @@
 <div class="row">
-  <!-- logo -->
-  <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
-  <!-- search -->
-  <div class="container search col l2 offset-l10">
-    <%= link_to "Previous Page", :back, class:'col l6' %>
-    <div class="input-field grey lighten-5 nav-wrapper">
-      <div class="input-field">
-        <!-- search form -->
-        <form action="/search" accept-charset="UTF-8" method="get">
-        <input name="utf8" type="hidden" value="✓">
-        <!-- <label for="search">search</label> -->
-        <input type="text" name="name" id="search">
-        <!-- <input type="submit" name="commit" value="search"> -->
-        </form>
-      </div>
+  <nav>
+    <div class="nav-wrapper" style="height: 120%;">
+    <!-- logo -->
+    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+    <!-- search -->
+      <ul class="right col l4 offset-l4">
+        <li><form action="/search" accept-charset="UTF-8" method="get">
+          <div class="input-field right col l12">
+            <input name="utf8" type="hidden" value="✓" required>
+            <input type="text" name="name" id="search">
+            <label for="search" id="search"></label>
+            <i class="material-icons right">search</i>
+          </div>
+        </form></li>
+        <li><%= link_to "Previous Page", :back, class:'col l12 previous' %></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 </div>
+
 
 <div class="row">
   <!-- google map -->
@@ -57,10 +59,10 @@
 <!-- show similar categories -->
 <div class="row">
   <div class="col l10 offset-l1">
-  <h2 class="sub-head col s10 l11 offset-s1">You might also like...</h2>
+  <h2 class="sub-head col s10 m10 l11 offset-s1 offset-m1">You might also like...</h2>
     <% @posts.each do |post| %>
       <% if post.category_id == @category.id %>
-        <div class="recommend-post col s10 m4 l3 offset-s1">
+        <div class="recommend-post col s10 m4 l3 offset-s1 offset-m1">
           <div class="card">
             <div class="card-image">
               <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
@@ -76,6 +78,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 <script type="text/javascript">

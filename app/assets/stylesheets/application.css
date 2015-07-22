@@ -22,6 +22,27 @@ h2.sub-head {font-family: 'Lato'; font-size: 1.75em; font-weight: 400;}
 h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
 
+input#search{
+  background-color: #f4f4f4;
+  padding-left: 0px; 
+  width: 80%;
+}
+.material-icons{
+  margin-left: 0px;
+}
+ul{
+  display: inline-block;
+}
+
+a.previous,.material-icons, input#search{
+  position: relative;
+  top: 15px;
+  color:purple;
+}
+.nav-wrapper{
+  background-color: white;
+}
+
 .center {
   text-align: center;
 }
@@ -35,14 +56,6 @@ div.set#map-canvas{
   width: 100%;
   height: 250px;
   background-color: #CCC; 
-}
-
-.search{
-  background-color: blue;
-}
-
-.previous{
-  background-color: yellow;
 }
 
 .post-info.row{
