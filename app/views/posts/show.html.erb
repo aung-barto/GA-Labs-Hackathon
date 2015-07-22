@@ -1,21 +1,22 @@
 <div class="row">
-  <!-- logo -->
-  <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
-  <!-- search -->
-  <div class="container search col l2 offset-l10">
-    <%= link_to "Previous Page", :back, class:'col l6' %>
-    <div class="input-field grey lighten-5 nav-wrapper">
-      <div class="input-field">
-        <!-- search form -->
-        <form action="/search" accept-charset="UTF-8" method="get">
-        <input name="utf8" type="hidden" value="✓">
-        <!-- <label for="search">search</label> -->
-        <input type="text" name="name" id="search">
-        <!-- <input type="submit" name="commit" value="search"> -->
-        </form>
-      </div>
+  <nav>
+    <div class="nav-wrapper" style="height: 120%;">
+    <!-- logo -->
+    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+    <!-- search -->
+      <ul class="right col s12 m5 l4 offset-l4 grey lighten-5">
+        <li><form action="/search" accept-charset="UTF-8" method="get">
+          <div class="input-field right col l12">
+            <input name="utf8" type="hidden" value="✓" required>
+            <input type="text" name="name" id="search">
+            <label for="search" id="search"></label>
+            <i class="material-icons right">search</i>
+          </div>
+        </form></li>
+        <li><%= link_to "Previous Page", :back, class:'col l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 </div>
 
 <div class="row">

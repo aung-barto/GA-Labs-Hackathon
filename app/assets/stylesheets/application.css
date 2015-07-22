@@ -23,6 +23,46 @@ h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
 p.indexp  {font-family: 'PT Sans'; font-size: 1.5em; font-weight:400;}
 
+input#search{
+  background-color: #f4f4f4;
+  padding-left: 0px; 
+  width: 80%;
+}
+.material-icons{
+  margin-left: 0px;
+}
+ul{
+  display: inline-block;
+}
+
+a.previous,.material-icons, input#search{
+  position: relative;
+  top: 15px;
+  color:purple;
+}
+.nav-wrapper{
+  background-color: white;
+}input#search{
+  background-color: #f4f4f4;
+  padding-left: 0px; 
+  width: 80%;
+}
+.material-icons{
+  margin-left: 0px;
+}
+ul{
+  display: inline-block;
+}
+
+a.previous,.material-icons, input#search{
+  position: relative;
+  top: 15px;
+  color: rgba(93, 89, 162, 1);
+}
+.nav-wrapper{
+  background-color: white;
+}
+
 .center {
   text-align: center;
 }
