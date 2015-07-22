@@ -1,20 +1,38 @@
-<header>
-<!-- logo with home link -->
-<%= link_to "Home", root_path %>
-<!-- search -->
-  <%= form_tag '/search', method: 'get' do %>
-    <%= label_tag "search" %>
-    <%= text_field_tag :name %>
-    <%= submit_tag "search" %>
-  <% end %>
+<!-- Header
+=================== -->
+<header class="row">
+  <nav>
+    <div class="nav-wrapper" style="height: 120%;">
+    <!-- logo -->
+    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+    <!-- search -->
+      <ul class="right col s12 m5 l4 offset-l4 grey lighten-5">
+        <li><form action="/search" accept-charset="UTF-8" method="get">
+          <div class="input-field right col l12">
+            <input name="utf8" type="hidden" value="✓" required>
+            <input type="text" name="name" id="search">
+            <label for="search" id="search"></label>
+            <i class="material-icons right">search</i>
+          </div>
+        </form></li>
+        <li><%= link_to "Previous Page", :back, class:'col l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
+      </ul>
+    </div>
+  </nav>
 </header>
+
+<!-- Body
+=================== -->
+
 <!-- google map -->
-<div class="set" id="map-canvas"></div>
+<div class="set  col l12" id="map-canvas"></div>
 
 <!-- search results -->
-<h2>Search results for "<%= @query %>" </h2>
-<hr>
-<p>These are your experiences based on your search. </p>
+  <h1 class="headline">Search results for "<%= @query %>" </h1>
+    <hr>
+      <h2 class='sub-head'>These are your experiences based on your search. </h2>
+
+<!-- group of search results -->
 <div class="post-group">
   <% @locations.each do |l| %>
     <% if l.address %>
@@ -24,11 +42,20 @@
     <% end %>
   <% end %>
   <% @results.each do |r| %>
-    <h3><%= link_to r.title, r, class:'results-image' %></h3>
+  
+  <div class="card">
+    <div class="card-image">
+      <h3><%= link_to r.title, r, class:'results-image' %></h3>
+    </div>
+  </div>
+  
     <li><%= link_to image_tag(r.image, class:'results-image'), r %></li>
   <% end %>
 </div>
 
+
+<!-- Map Script 
+================================-->
 <script type="text/javascript">
 var markersArray = [];
 var NY_LAT = 40.735189;
@@ -48,6 +75,7 @@ $(document).ready(function() {
     var mapOptions = {
       center: new google.maps.LatLng(NY_LAT, NY_LNG),
       zoom: 16,
+      styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
 
       // hide controls
       panControl: true,
