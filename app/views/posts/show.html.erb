@@ -105,7 +105,9 @@
       if ($('#address').html()) {
         address = $('#address').html();
       } else if ($('#cross-streets').html()){
-        address = $('#cross-streets').html();
+        var cross = ($('#cross-streets').html().substr(9,60)).split("and");
+        console.log(cross);
+        address = cross.join("");
       } else if ($('#l_address').val()){
         address2.push($('#l_address').val()+ ", " + $('#l_city').val());
         for(i = 0; i < address2.length; i++){
@@ -124,10 +126,12 @@
           styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
           mapTypeId: google.maps.MapTypeId.ROADMAP
           };
+          console.log(address);
 
           var map = new google.maps.Map($('#map')[0], mapOptions);
           map.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
             map: map,
             position: results[0].geometry.location
           });
