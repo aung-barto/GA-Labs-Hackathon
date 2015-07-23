@@ -105,7 +105,9 @@
       if ($('#address').html()) {
         address = $('#address').html();
       } else if ($('#cross-streets').html()){
-        address = $('#cross-streets').html();
+        var cross = ($('#cross-streets').html().substr(9,60)).split("and");
+        console.log(cross);
+        address = cross.join("");
       } else if ($('#l_address').val()){
         address2.push($('#l_address').val()+ ", " + $('#l_city').val());
         for(i = 0; i < address2.length; i++){
@@ -136,10 +138,12 @@
       }
 
           };
+          console.log(address);
 
           var map = new google.maps.Map($('#map')[0], mapOptions);
           map.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
             map: map,
             position: results[0].geometry.location
           });

@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   
   def search
     @query = params[:name]
-    @results = Post.search(@query).limit(10)
+    @results = Post.search(@query).sample(10)
 
     # get address to be convert into lat/lng for map markers
     @locations = []
