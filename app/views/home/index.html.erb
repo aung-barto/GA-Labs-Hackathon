@@ -1,51 +1,69 @@
 
 
+<div class="row">
+  <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
+</div>  
+
+<div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%></div>
+
+<div class="container col s10 m10 l12 hero-search">
   <div class="row">
-      <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
-  </div>  
-  
-  <div class=""><%= image_tag("heroshot-xl.jpg", class:'col l12 responsive-img hero', :alt => "Trekabilly")%></div>
-    
-    <div class="container col s10 m10 l12 hero-search">
-      <div class="row">
-        <div class="input-field grey lighten-5 ">
+    <div class="input-field grey lighten-5 ">
 
-            <!-- search form -->
-            <form action="/search" accept-charset="UTF-8" method="get">
-            <input name="utf8" type="hidden" value="✓" required>
-            <label for="search">search</label>
+        <!-- search form -->
+      <form action="/search" accept-charset="UTF-8" method="get">
+        <input name="utf8" type="hidden" value="✓" required>
+          <label for="search">search</label>
             <input type="text" name="name" id="name">
-            <i class="material-icons">search</i>
-            <!-- <input type="submit" name="commit" value="search"> -->
-          </form>
-        </div>
-      </div>
+        <i class="material-icons">search</i>
+        <!-- <input type="submit" name="commit" value="search"> -->
+      </form>
     </div>
+  </div>
+</div>
 
-    <div class="container col l12 index-block">
-      <h1 class="headline col s12 center">Why Trekabilly?</h1>
-      <p class="center indexp">Our community has both locals and tourists to give you the best of both worlds.
-  Our community has both locals and tourists to give.</p>
-      <h2 class="sub-head center">Browse some of our categories</h2> 
-    </div>
+<!-- Center index statement -->
+<div class="container col l12 index-block">
+  <h1 class="headline col s12 center">Why Trekabilly?</h1>
+    <p class="center indexp">Our community has both locals and tourists to give you the best of both worlds.
+      Our community has both locals and tourists to give.</p>
+  <h2 class="sub-head center">Browse some of our categories</h2> 
+</div>
+
+<div class="row">
+  <div class="col l10 offset-l1">
   
-
-    <% @categories.each do |cat| %>
+  <!-- cyles through all he categories -->
+    <% @categories.each do |cat| %><!--loops through all the categories and places them in the cat variable-->
       <ul style="list-style-type: none ">
-        <li><h3><%= cat.name %></h3></li>
-        <% post_count = 0 %>
-        <% @posts.each do |post| %>
-          <% if post.category_id == cat.id %>
-            <h3><%= link_to post.title, post %></h3>
-            <p>Category <%= post.category_id %></p>
-            <p><%= link_to image_tag(post.image, class:'posts-image'), post %></p>
-            <p><%= post.content[0...50]+"..." %></p>
+        <li><h3><%= cat.name %></h3></li><!--grabs all the variable of cats' names-->
+        
+        <% post_count = 0 %><!--iterator count that starts at zero-->
+        <% @posts.each do |post| %><!--loops through all posts and assigns a variable of post to them-->
+          <% if post.category_id == cat.id %><!--if the category_id in the posts table matchs the variable cats' id run the following script-->
+            <div class=" col s10 m4 l3 offset-si offset-m1">
+              <div class="card">
+                
+                <div class="card-image">
+                  <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
+                  <span class="card-title"><%= link_to post.title, post, class:'title' %>
+                  </span>
+                </div>
+
+              <div class="card-content">           
+                <p class="p"><%= post.content[0...50]+"..." %></p>
+              </div>
+                
+                <p>Category <%= post.category_id %></p>
+           
             <br>
-            <% post_count +=1 %>
+            <% post_count +=1 %> <!--adds a to the counter ever loop cycle-->
           <% end %>
-        <% break if post_count == 3 %>
+        <% break if post_count == 3 %><!--breaks the counter as soon as we have 3 posts-->
         <% end %>
       </ul>
     <% end %>
-  
+  </div>
+</div>
+
 <!-- </div>
