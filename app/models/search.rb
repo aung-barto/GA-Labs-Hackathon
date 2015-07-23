@@ -1,4 +1,5 @@
 class Search < ActiveRecord::Base
+	# validates :name, presence: true
 
   def self.search(search)
     search_condition = "%" + search + "%"
