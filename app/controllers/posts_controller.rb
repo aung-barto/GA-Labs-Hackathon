@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
 	def show
     @post = Post.find(params[:id])
+
     @location = Location.find(@post.location_id)
     @category = Category.find(@post.category_id)
 
@@ -16,14 +17,21 @@ class PostsController < ApplicationController
   
   def search
     @query = params[:name]
-    @results = Post.search(@query).limit(10)
 
+    # to redirect to the index page if the search bar is empty
+    if !(params[:name].present?) && params[:name].length < 1
+      redirect_to root_path, :error => "Please enter a search word"
+
+    else
+      @results = Post.search(@query).limit(10)
+  
     # get address to be convert into lat/lng for map markers
     @locations = []
-    @results.each do |r|
-      @locations << Location.find(r.location_id)
+      @results.each do |r|
+        @locations << Location.find(r.location_id)
+      end
     end
-    render "search"
+    "render (search) and return" 
   end
 
 end

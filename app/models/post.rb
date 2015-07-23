@@ -2,9 +2,8 @@ class Post < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :location
 
+ 
 
-  validates_presence_of :name, :message => 'Enter a search word'
-  # validates :name, presence: true
 
 
 
