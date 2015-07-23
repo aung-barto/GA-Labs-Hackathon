@@ -71,7 +71,7 @@
     <h2 class="sub-head col s10 m10 l11 offset-s1 offset-m1">You might also like...</h2>
     <% @posts.each do |post| %><!--loops through all posts-->
       <% if post.category_id == @category.id %><!--finds the cat ids from those looped posts and if they're the same it serves them up-->
-        <div class=" col s10 m4 l3 offset-s1 offset-m1">
+        <div class="recommend-post col s10 m4 l3 offset-s1 offset-m1">
           <div class="card">
             <div class="card-image">
               <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>

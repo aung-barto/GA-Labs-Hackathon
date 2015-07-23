@@ -105,6 +105,20 @@ div.set#map-canvas{
   height: 150px;
   margin-bottom: 20px
 }
+/*.posts-image{
+  width: 100px; 
+  height: auto;
+}*/
+
+.post-group{
+  display: inline-block;
+  width: 350px;
+}
+
+img.results-image{
+  width: 450px;
+  height: 350px;
+}
 
 #location-name{
   margin-top: 0px;

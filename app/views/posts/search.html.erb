@@ -45,11 +45,14 @@
   
   <div class="card">
     <div class="card-image">
-      <h3><%= link_to r.title, r, class:'results-image' %></h3>
+      <div><%= link_to image_tag(r.image, class:'posts-image results-image responsive-img'), r %></div>
+      <span class="card-title"><%= link_to r.title, r, class:'title' %></span>
     </div>
+      <div class="card-content">
+        <p class="p"><%= r.content[0...50]+"..." %></p>
+      </div>
   </div>
-  
-    <li><%= link_to image_tag(r.image, class:'results-image'), r %></li>
+
   <% end %>
 </div>
 
