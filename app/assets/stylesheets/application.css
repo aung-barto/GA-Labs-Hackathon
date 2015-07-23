@@ -24,26 +24,15 @@ h3.sub {font-family: 'PT Sans'; font-size: .8em; font-weight:400;}
 p.p  {font-family: 'PT Sans'; font-size: 1em; font-weight:400;}
 p.indexp  {font-family: 'PT Sans'; font-size: 1.5em; font-weight:400;}
 
-input#search{
-  background-color: #f4f4f4;
-  padding-left: 0px; 
-  width: 80%;
-}
-.material-icons{
-  margin-left: 0px;
-}
-ul{
-  display: inline-block;
+.center {
+  text-align: center;
 }
 
-a.previous,.material-icons, input#search{
-  position: relative;
-  top: 15px;
-  color:purple;
-}
-.nav-wrapper{
-  background-color: white;
-}input#search{
+
+
+/*search styles
+============================*/
+input#search{
   background-color: #f4f4f4;
   padding-left: 0px; 
   width: 80%;
@@ -78,17 +67,16 @@ ul{
 
 a.previous,.material-icons, input#search{
   position: relative;
-  top: 15px;
-  color:purple;
+  top: -1px;
+  color: rgba(93, 89, 162, 1);
 }
 .nav-wrapper{
   background-color: white;
 }
 
-.center {
-  text-align: center;
-}
 
+/*Map
+=========================*/
 div.set#map{
   width: 100%;
   height: 250px;
@@ -100,6 +88,8 @@ div.set#map-canvas{
   background-color: #CCC; 
 }
 
+/*Post
+=========================*/
 .post-info.row{
   height: 355px;
 }
@@ -109,6 +99,25 @@ div.set#map-canvas{
   margin: 0 0 15px 0;
   padding: 0 0 0 0;
   height: 262px;
+}
+
+.posts-image{
+  height: 150px;
+  margin-bottom: 20px
+}
+/*.posts-image{
+  width: 100px; 
+  height: auto;
+}*/
+
+.post-group{
+  display: inline-block;
+  width: 350px;
+}
+
+img.results-image{
+  width: 450px;
+  height: 350px;
 }
 
 #location-name{
@@ -122,10 +131,6 @@ div.set#map-canvas{
   padding: 5px 5px 5px 5px;
 }
 
-.posts-image{
-  height: 150px;
-  margin-bottom: 20px
-}
 .card .card-image img{
   height: 150px;
 }
@@ -140,6 +145,8 @@ a.title{
   padding: 10px 10px 10px 10px;
 }
 
+/*image style
+=================================*/
 .hero {
   position: absolute;
   z-index: -100;
@@ -148,14 +155,12 @@ a.title{
   /*width: 768 px;*/
   /*height: 264 px;*/
 }
-
 .logo {
   /*background-image: url(<%= asset_path 'logo.png'%>);*/
   z-index: 9999;
   
   position: absolute;
 }
-
 .hero-search {
   padding-top: 23%;
   z-index: 2;
@@ -167,7 +172,6 @@ a.title{
   /*bottom: 380px;*/
   /*right: 190px;*/
 }
-
 .index-block {
   padding-top: 4.5%;
   /*margin: 10%;*/

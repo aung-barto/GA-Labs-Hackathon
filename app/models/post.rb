@@ -2,13 +2,8 @@ class Post < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :location
 
- 
-
-
-
-
-
   def self.search(query)
+
       categories = ["food", "sights", "parks", "culture", "other activities"]
       if categories.include? query.downcase 
         Post.joins{category}.where{(category.name.like query)}

@@ -1,21 +1,44 @@
-<header>
-<!-- logo with home link -->
-<%= link_to "Home", root_path %>
-<!-- search -->
-  <%= form_tag '/search', method: 'get' do %>
-    <%= label_tag "search" %>
-    <%= text_field_tag :name %>
-    <%= submit_tag "search" %>
-  <% end %>
+<!-- Header
+=================== -->
+<header class="row">
+  <nav>
+    <div class="nav-wrapper" style="height: 120%;">
+    <!-- logo -->
+    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+    <!-- search -->
+      <ul class="right col s12 m5 l4 offset-l4 grey lighten-5">
+        <li><form action="/search" accept-charset="UTF-8" method="get">
+          <div class="input-field right col l12">
+            <input name="utf8" type="hidden" value="✓" required>
+            <input type="text" name="name" id="search">
+            <label for="search" id="search"></label>
+            <i class="material-icons right">search</i>
+          </div>
+        </form></li>
+        <li><%= link_to "Previous Page", :back, class:'col l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
+      </ul>
+    </div>
+  </nav>
 </header>
+
+<!-- Body
+=================== -->
+
 <!-- google map -->
-<div class="set" id="map-canvas"></div>
+<div class="set  col l12" id="map-canvas"></div>
 
 <!-- search results -->
-<h2>Search results for "<%= @query %>" </h2>
-<hr>
-<p>These are your experiences based on your search. </p>
-<div class="post-group">
+<div class="row">
+  <div class="col s12 m12 l12">
+    <h1 class="headline">Search results for "<%= @query %>" </h1>
+      <hr>
+      <h2 class='sub-head'>These are your experiences based on your search. </h2>
+  </div>
+</div>
+
+<!-- group of search results -->
+<!--wrapped in hidden span tags so that it can be grabbed by the map script by DOM manipulation-->
+<div class="row">
   <% @locations.each do |l| %>
     <% if l.address %>
       <span style="display: none;"><%= l.address %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
@@ -23,12 +46,25 @@
       <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
     <% end %>
   <% end %>
+
   <% @results.each do |r| %>
-    <h3><%= link_to r.title, r, class:'results-image' %></h3>
-    <li><%= link_to image_tag(r.image, class:'results-image'), r %></li>
-  <% end %>
+  <div class="col s10 m4 l3 offset-s1 offset-m1">  
+    <div class="card">
+      <div class="card-image">
+        <div><%= link_to image_tag(r.image, class:'posts-image results-image responsive-img'), r %></div>
+        <span class="card-title"><%= link_to r.title, r, class:'title' %></span>
+      </div>
+        <div class="card-content">
+          <p class="p"><%= r.content[0...50]+"..." %></p>
+        </div>
+    </div>
+  </div>
+    <% end %>
 </div>
 
+
+<!-- Map Script 
+================================-->
 <script type="text/javascript">
 var markersArray = [];
 var NY_LAT = 40.735189;
@@ -48,6 +84,7 @@ $(document).ready(function() {
     var mapOptions = {
       center: new google.maps.LatLng(NY_LAT, NY_LNG),
       zoom: 16,
+      styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
 
       // hide controls
       panControl: true,
