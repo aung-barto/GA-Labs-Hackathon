@@ -22,6 +22,13 @@
   </div>
 </div>
 
+<div class="row">
+  <div class=" col l10 offset-l1">
+    <% @categories.each do |d| %>
+    <% end %>
+  </div>
+</div>
+
 <!-- Center index statement -->
 <div class="container col l12 index-block">
   <h1 class="headline col s12 center">Why Trekabilly?</h1>
@@ -32,7 +39,6 @@
 
 <div class="row">
   <div class="col l10 offset-l1">
-  
   <!-- cyles through all he categories -->
     <% @categories.each do |cat| %><!--loops through all the categories and places them in the cat variable-->
       <ul style="list-style-type: none ">
@@ -41,26 +47,26 @@
         <% post_count = 0 %><!--iterator count that starts at zero-->
         <% @posts.each do |post| %><!--loops through all posts and assigns a variable of post to them-->
           <% if post.category_id == cat.id %><!--if the category_id in the posts table matchs the variable cats' id run the following script-->
-            <div class=" col s10 m4 l3 offset-si offset-m1">
-              <div class="card">
+            <div class=" col l12 offset-si offset-m1">
+              <li><div class="card col s10 m4 l3">
                 
                 <div class="card-image">
                   <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
-                  <span class="card-title"><%= link_to post.title, post, class:'title' %>
+                  <span class="card-title"><%= link_to post.title, post, class:'title shadow' %>
                   </span>
                 </div>
 
-              <div class="card-content">           
-                <p class="p"><%= post.content[0...50]+"..." %></p>
-              </div>
+                <div class="card-content">           
+                  <p class="p"><%= post.content[0...50]+"..." %></p>
+                </div>
                 
-                <p>Category <%= post.category_id %></p>
-           
+                <!-- <p>Category <%= post.category_id %></p> -->
+            </div>
             <br>
             <% post_count +=1 %> <!--adds a to the counter ever loop cycle-->
           <% end %>
-        <% break if post_count == 3 %><!--breaks the counter as soon as we have 3 posts-->
-        <% end %>
+          <% break if post_count == 4 %><!--breaks the counter as soon as we have 3 posts-->
+        <% end %></li>
       </ul>
     <% end %>
   </div>

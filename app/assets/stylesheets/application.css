@@ -46,6 +46,9 @@ input#search{
 ul{
   display: inline-block;
 }
+li{
+  display: inline; 
+}
 
 a.previous,.material-icons, input#search{
   position: relative;

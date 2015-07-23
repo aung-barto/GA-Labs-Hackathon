@@ -77,14 +77,14 @@
             
             <div class="card-image">
               <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
-              <span class="card-title"><%= link_to post.title, post, class:'title' %>
+              <span class="card-title"><%= link_to post.title, post, class:'title shadow' %>
               </span>
             </div>
 
             <div class="card-content">
               <p class="p"><%= post.content[0...50]+"..." %></p>
             </div>
-            
+
           </div>
 
         </div>
