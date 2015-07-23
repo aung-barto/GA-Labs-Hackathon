@@ -54,7 +54,7 @@ Our goal with trekabilly is to create a community website where individuals post
 
 ####Locations
 |l_id  |street_address  |city  |state  |cross_st1  |cross_st2  |neighborhood  |location_name  |location_notes  |phone  |website  |location_category_id
-|----|----|----|----|----|----|----|----|----|----|----|
+|----|----|----|----|----|----|----|----|----|----|----|---|
 |1  |24 Reed St  |Brooklyn  |NY  |  |  |  |Brooklyn Crab  |Great Views  |  |  |1  |
 |2  |337 3rd ave  |New York  |NY  |  |  |  |Rose Hill Tavern  |Sports Bar  |  |  |1  |
 |3  |  |New York  |NY  |E 106th  |Park Ave  |  |Graffiti Wall of Fame  |  |  |  |4  |
