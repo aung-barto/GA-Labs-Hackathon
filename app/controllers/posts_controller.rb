@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
     # to redirect to the index page if the search bar is empty
     if !(params[:name].present?) && params[:name].length < 1
-      redirect_to root_path, :error => "Please enter a search word"
+      redirect_to root_path, @error => "Please enter a search word"
 
     else
       @results = Post.search(@query).limit(10)

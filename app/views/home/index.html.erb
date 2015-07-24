@@ -1,5 +1,4 @@
 
-
   <div class="row">
       <div class=""><%= link_to image_tag('logo.png', class:'col s11 m5 l3 logo'), root_path %></div>
   </div>  
@@ -9,7 +8,10 @@
     <div class="container col s10 m10 l12 hero-search">
       <div class="row">
         <div class="input-field grey lighten-5 ">
-
+        <!-- adding error message -->
+          <% if @error %>
+            <%= @error %>
+          <% end %>
             <!-- search form -->
             <form action="/search" accept-charset="UTF-8" method="get">
             <input name="utf8" type="hidden" value="✓" required>

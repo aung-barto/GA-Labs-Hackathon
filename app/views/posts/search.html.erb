@@ -83,7 +83,7 @@ $(document).ready(function() {
     // Define some options for the map
     var mapOptions = {
       center: new google.maps.LatLng(NY_LAT, NY_LNG),
-      zoom: 16,
+      zoom: 11,
       styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
 
       // hide controls
@@ -116,30 +116,40 @@ $(document).ready(function() {
       location_object['city']
       // location_object['country_code']
     ].join(', ');
-    console.log("this is the outterscoped address "+ address);
-
+    // console.log("this is the outterscoped address "+ address);
+    
     // geocode the address and get the lat/lng
+    var infowindow = new google.maps.InfoWindow();
     geocoder.geocode({address: address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
 
         // create a marker and drop it on the name on the geocoded location
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          map: map,
-          position: results[0].geometry.location,
-          title: name
-        });
+          var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            map: map,
+            position: results[0].geometry.location,
+            title: name 
+          });
 
-        // save the marker object to calculate the map bound and zoom level
-        markersArray.push(marker);
-        var bounds = new google.maps.LatLngBounds()
-        for (m = 0; m < markersArray.length; m++){
-          bounds.extend(markersArray[m].position) 
-        }
-        map.fitBounds(bounds);
+          // to see info window on click 
+          google.maps.event.addListener(marker, 'click', function(){
+            var html = '<p>' + marker.title + '</p>';
+            infowindow.setContent(html);
+            infowindow.open(map, marker);
+          });
+              
+          // save the marker object to calculate the map bound and zoom level
+          markersArray.push(marker);
+          var bounds = new google.maps.LatLngBounds()
+          for (m = 0; m < markersArray.length; m++){
+            bounds.extend(markersArray[m].position) 
+          }
+          map.fitBounds(bounds);
+        
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
       }
+
     });
   };
   /**
