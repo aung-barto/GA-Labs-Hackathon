@@ -50,11 +50,11 @@ li{
   display: inline; 
 }
 
-a.previous,.material-icons, input#search{
+/*a.previous,.material-icons, input#search{
   position: relative;
   top: 15px;
   color: rgba(93, 89, 162, 1);
-}
+}*/
 .nav-wrapper{
   background-color: white;
 }
@@ -75,6 +75,7 @@ a.previous,.material-icons, input#search{
   position: relative;
   top: -1px;
   color: rgba(93, 89, 162, 1);
+  border-bottom: 0px solid;
 }
 .nav-wrapper{
   background-color: white;
@@ -175,7 +176,7 @@ a.title{
 }
 .hero-search {
   padding-top: 23%;
-  z-index: 2;
+  /*z-index: 2;*/
   /*background-image: url(/assets/heroshot-xl.jpg);*/
   /*background-size: 839px 388px;*/
   /*background-repeat: no-repeat;*/

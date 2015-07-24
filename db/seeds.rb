@@ -10,7 +10,7 @@ Category.delete_all
 Location.delete_all
 Post.delete_all
 
-Category.create({name: "Food"})
+Category.create({name: "Food and Drink"})
 Category.create({name: "Sights"})
 Category.create({name: "Parks"})
 Category.create({name: "Culture"})
