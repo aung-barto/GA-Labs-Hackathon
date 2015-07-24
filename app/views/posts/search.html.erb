@@ -41,27 +41,30 @@
 <!-- group of search results -->
 <!--wrapped in hidden span tags so that it can be grabbed by the map script by DOM manipulation-->
 <div class="row">
-  <% @locations.each do |l| %>
-    <% if l.address %>
-      <span style="display: none;"><%= l.address %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
-    <% else %>
-      <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
+  <div class="col l10 offset-l1">
+    <% @locations.each do |l| %>
+      <% if l.address %>
+        <span style="display: none;"><%= l.address %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
+      <% else %>
+        <span style="display: none;"><%= l.cross_st1 %> and <%= l.cross_st2 %>, <%= l.city %> <%= l.state %>, <%= l.location_name %></span>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% @results.each do |r| %>
-  <div class="col s10 m4 l3 offset-s1 offset-m1">  
-    <div class="card">
-      <div class="card-image">
-        <div><%= link_to image_tag(r.image, class:'posts-image results-image responsive-img'), r %></div>
-        <span class="card-title "><%= link_to r.title, r, class:'title shadow' %></span>
+    <% @results.each do |r| %>
+    <div class="col s10 m4 l3 offset-s1 offset-m1">  
+      <div class="card">
+        <div class="card-image">
+          <div><%= link_to image_tag(r.image, class:'posts-image results-image responsive-img'), r %></div>
+          <span class="card-title "><%= link_to r.title, r, class:'title shadow' %></span>
+          </div>
+          <div class="card-content">
+            <p class="p"><%= r.content[0...40]+"..." %></p>
+          </div>
+
       </div>
-        <div class="card-content">
-          <p class="p"><%= r.content[0...50]+"..." %></p>
-        </div>
     </div>
-  </div>
     <% end %>
+  </div>
 </div>
 
 
@@ -110,7 +113,7 @@ $(document).ready(function() {
       });
     };
   //converting address or cross streets into Lat Long
-  function geocode_address(map, name, location_object) {
+  function geocode_address(map, title, location_object) {
     var geocoder = new google.maps.Geocoder();
 
     var address = [
@@ -124,14 +127,29 @@ $(document).ready(function() {
     geocoder.geocode({address: address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
 
+        var infowindow = new google.maps.InfoWindow({
+          content: title,
+        });
         // create a marker and drop it on the name on the geocoded location
         var marker = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
           map: map,
           position: results[0].geometry.location,
-          title: name
+          title: title
         });
-
+        google.maps.event.addListener(marker, 'mouseover', function(){
+          var iwOuter = $('.gm-style-iw');
+          // hide the close button
+          var iwCloseBtn = iwOuter.next();
+          iwCloseBtn.css({
+            width: 0,
+            height: 0
+          })
+          infowindow.open(map,marker);
+        });
+        google.maps.event.addListener(marker, 'mouseout', function(){
+          infowindow.close(map,marker);
+        });
         // save the marker object to calculate the map bound and zoom level
         markersArray.push(marker);
         var bounds = new google.maps.LatLngBounds()
