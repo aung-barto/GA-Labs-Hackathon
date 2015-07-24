@@ -58,7 +58,7 @@
           <span class="card-title "><%= link_to r.title, r, class:'title shadow' %></span>
           </div>
           <div class="card-content">
-            <p class="p"><%= r.content[0...40]+"..." %></p>
+            <p class="p"><%= r.content[0...100]+"..." %></p>
           </div>
 
       </div>
@@ -159,7 +159,6 @@ $(document).ready(function() {
           bounds.extend(markersArray[m].position) 
         }
         map.fitBounds(bounds);
->>>>>>> e45e1606551b4ac48926630f05fd1d112e8725ae
       } else {
         console.log("Geocode was not successful for the following reason: " + status);
       }
