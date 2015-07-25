@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     if !(params[:name].present?) && params[:name].length < 1
       redirect_to root_path, @error => "Please enter a search word"
 
-    else
+    else 
       @results = Post.search(@query).limit(10)
   
     # get address to be convert into lat/lng for map markers
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
       @results.each do |r|
         @locations << Location.find(r.location_id)
       end
+
     end
     "render (search) and return" 
   end
