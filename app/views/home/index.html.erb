@@ -12,12 +12,12 @@
 
         <!-- search form -->
       <form action="/search" accept-charset="UTF-8" method="get">
-        <i class="material-icons">search</i>
         <input name="utf8" type="hidden" value="✓" required>
           <input type="text" name="name" id="name" placeholder="search">
-            <label for="search"></label>
+            <button class="btn-flat" type="submit" name="action" for="search"><i class="material-icons index">search</i></button>
         <!-- <input type="submit" name="commit" value="search"> -->
       </form>
+     
     </div>
   </div>
 </div>
@@ -43,22 +43,22 @@
     <% @categories.each do |cat| %><!--loops through all the categories and places them in the cat variable-->
       
       <h3 class="category-names"><%= cat.name %></h3><!--grabs all the variable of cats' names-->
-        
-        <% post_count = 0 %><!--iterator count that starts at zero-->
+           <% post_count = 0 %><!--iterator count that starts at zero-->
         <% @posts.each do |post| %><!--loops through all posts and assigns a variable of post to them-->
           <% if post.category_id == cat.id %><!--if the category_id in the posts table matchs the variable cats' id run the following script-->
-            <div class=" col s10 m4 l3 offset-s1 offset-m1">
+            <div class=" col s10 m6 l3 offset-s1">
 
               <div class="card">
     
                 <div class="card-image">
                   <%= link_to image_tag(post.image, class:'posts-image results-image responsive-img'), post %>
                   <span class="card-title"><%= link_to post.title, post, class:'title shadow' %>
+                  <div class="shadow"></div>
                   </span>
                 </div>
 
                 <div class="card-content">           
-                  <p class="p"><%= link_to post.content[0...100]+"...", post %></p>
+                  <p class="p"><%= link_to post.content, post, class:'post-text' %></p>
                 </div>
 
               </div>  

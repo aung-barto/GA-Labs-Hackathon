@@ -1,21 +1,20 @@
 <!-- Header
 =================== -->
 <header class="row">
-  <nav>
-    <div class="nav-wrapper" style="height: 120%;">
     <!-- logo -->
-    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+  <%= link_to image_tag('logo.png', class:'logo col s12 m5 l3'), root_path %> 
+  <nav class="white">
     <!-- search -->
-      <ul class="right col s12 m5 l4 offset-l4 grey lighten-5">
+    <div class="nav-wrapper grey lighten-5 col s12 m5 l4 offset-l5" style="height: 120%;">
+      <ul class="right">
         <li><form action="/search" accept-charset="UTF-8" method="get">
-          <div class="input-field right col l12">
+          <div class="input-field left col s12 m12 l12">
             <input name="utf8" type="hidden" value="✓" required>
-            <input type="text" name="name" id="search">
-            <label for="search" id="search"></label>
-            <i class="material-icons right">search</i>
+            <input type="text" name="name" id="search" placeholder="search">
+            <button class="btn-flat" type="submit" name="action" for="search"><i class="material-icons">search</i></button>
           </div>
         </form></li>
-        <li><%= link_to "Previous Page", :back, class:'col l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
+        <li><%= link_to "Previous Page", :back, class:'col s12 m12 l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
       </ul>
     </div>
   </nav>
@@ -37,10 +36,10 @@
 </div>
 
 <div class="post-info row">
-  <%= image_tag(@post.image, :class => 'post-image col s12 m8 l5 offset-l1') %> 
+  <%= image_tag(@post.image, :class => 'post-image col s10 m8 l5 offset-s1 offset-m1 offset-l1') %> 
   
   <!-- conditions for location fields -->
-  <div id="location-info" class="col s12 l5">
+  <div id="location-info" class="col s10 l5 offset-s1">
     <h2 class="sub-head" id="location-name"><%= @location.location_name %></h2>
     <% if @location.location_notes %>
       <p><%= @location.location_notes %></p>
@@ -82,7 +81,7 @@
             </div>
 
             <div class="card-content">
-              <p class="p"><%= post.content[0...50]+"..." %></p>
+              <p class="p post-text"><%= post.content %></p>
             </div>
 
           </div>
