@@ -1,19 +1,18 @@
 <!-- Header
 =================== -->
 <header class="row">
-  <nav>
-    <div class="nav-wrapper" style="height: 120%;">
-    <!-- logo -->
-    <%= link_to image_tag('logo.png', class:'logo col s11 m5 l3'), root_path %>
+  <!-- logo -->
+  <%= link_to image_tag('logo.png', class:'logo col s12 m5 l3'), root_path %> 
+  <nav class="white">  
     <!-- search -->
-      <ul class="right col s12 m5 l4 offset-l4 grey lighten-5">
+    <div class="nav-wrapper grey lighten-5 col s12 m5 l4 offset-l5" style="height: 120%;">
+      <ul class="right">
         <li>
           <form action="/search" accept-charset="UTF-8" method="get">
-            <div class="input-field right col l12">
+            <div class="input-field right col s12 m12 l12">
               <input name="utf8" type="hidden" value="✓" required>
               <input type="text" name="name" id="search" placeholder="search">
-              <label for="search" id="search"></label>
-              <i class="material-icons right">search</i>
+              <button class="btn-flat" type="submit" name="action" for="search"><i class="material-icons">search</i></button>
             </div>
           </form>
         </li>
@@ -56,7 +55,7 @@
     <% end %>
 
     <% @results.each do |r| %>
-    <div class="col s10 m6 l3 offset-s1">  
+    <div class="col s10 m5 l3 offset-s1 offset-m1">  
       <div class="card">
         <div class="card-image">
           <div><%= link_to image_tag(r.image, class:'posts-image results-image responsive-img'), r %></div>

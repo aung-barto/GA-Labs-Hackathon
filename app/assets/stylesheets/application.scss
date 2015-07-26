@@ -109,9 +109,7 @@ a.previous,.material-icons, input#search{
 .nav-wrapper{
   background-color: white;
 }
-.input-field{
-  width:200px;
-}
+
 
 /*Map
 =========================*/
@@ -265,10 +263,11 @@ span.card-title{
   /*margin: 10%;*/
 }
 
+
 @media (max-width: 992px) {
   /*category name positions when in mobile mode*/
   .category-names{
-    margin-left:48px;
+    margin-left:70px;
   }
 
   div#location-info{
@@ -276,10 +275,18 @@ span.card-title{
   }
   
   .material-icons{
-    padding-top:10px;
+    padding-top:0px;
   }
   
   p#post-content{
     height:auto;
+  }
+}
+@media (max-width: 630px) {
+  .category-names{
+    margin-left:48px;
+  }
+  .material-icons{
+    padding-top:10px;
   }
 }

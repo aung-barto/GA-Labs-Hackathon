@@ -8,16 +8,14 @@
 
 <div class="container col s10 m10 l12 hero-search">
   <div class="row">
-    <div class="input-field grey lighten-5 ">
-
+    <div class="input-field grey lighten-5">
         <!-- search form -->
       <form action="/search" accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="✓" required>
           <input type="text" name="name" id="name" placeholder="Search by Activities or by Category">
             <button class="btn-flat" type="submit" name="action" for="search"><i class="material-icons index">search</i></button>
         <!-- <input type="submit" name="commit" value="search"> -->
-      </form>
-     
+      </form>   
     </div>
   </div>
 </div>
@@ -46,7 +44,7 @@
            <% post_count = 0 %><!--iterator count that starts at zero-->
         <% @posts.each do |post| %><!--loops through all posts and assigns a variable of post to them-->
           <% if post.category_id == cat.id %><!--if the category_id in the posts table matchs the variable cats' id run the following script-->
-            <div class=" col s10 m6 l3 offset-s1">
+            <div class=" col s10 m5 l3 offset-s1 offset-m1">
 
               <div class="card">
     
