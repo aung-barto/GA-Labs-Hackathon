@@ -1,8 +1,11 @@
+<a href="http://www.trekabilly.com"><img src="./readmeImages/logo.png"></a>
 ##Application Description
 
 ###Website To See Local and Tourist Activities In One Place
-Our goal with trekabilly is to create a community website where individuals post tips about their own city and cities they’ve visited. Anyone looking to plan a trip will be able to search for posts by category, keyword, or location and receive results that talk about the whole city, not just the tourist bits. We’ll also integrate voting on posts to engage the community further and do an even better job of giving the most interesting results.
+Our goal with Trekabilly is to create a community website where individuals post tips about their own city and cities they’ve visited. Anyone looking to plan a trip will be able to search for posts by category, keyword, or location and receive results that talk about the whole city, not just the tourist bits. We’ll also integrate voting on posts to engage the community further and do an even better job of giving the most interesting results.
 
+##Trekabilly live site
+###<a href="http://www.trekabilly.com/">Trekabilly.com</a>
 ##Team Members
 + Aung Barteaux - Developer
 + Dipshikha Biswas - Developer
@@ -16,19 +19,22 @@ Our goal with trekabilly is to create a community website where individuals post
 ##Technology Used
 + Ruby on Rails
 + Ruby ERB
++ JavaScript
 + Postgresql - Database
 + Google Maps API
 + HTML & CSS
 + Draw.io - ERD
 + Moqups.com - Wireframes
++ Adobe Illustrator
 
 ##Trello Board
 <a href="https://trello.com/b/0w01DdZI/ga-lab-bobby-s-angels-team-11" target="_blank">TrekaBilly Trello</a>
 
 ##Artifacts for MVP
 ###Wireframes
-
-###Routes
+|Home|Search Results|Post Details|
+|---|---|---|
+|<img src="./readmeImages/trekabilly-index.png">|<img src="./readmeImages/trekabilly-searchresults.png">|<img src="./readmeImages/trekabilly-detail.png">|
 
 ###ERD
 <img src="./readmeImages/Trekabilly-ERD.png">
@@ -44,7 +50,6 @@ Our goal with trekabilly is to create a community website where individuals post
 |4  |Culture  |
 |5  |Other Activities  |
 
-
 ####Posts
 |p_id  |title  |image  |content  |vote_up  |vote_down  |post_user_id  |post_location_id  |post_category_id  |timestamp  |
 |----|----|----|----|----|----|----|----|----|----|
@@ -59,19 +64,6 @@ Our goal with trekabilly is to create a community website where individuals post
 |2  |337 3rd ave  |New York  |NY  |  |  |  |Rose Hill Tavern  |Sports Bar  |  |  |1  |
 |3  |  |New York  |NY  |E 106th  |Park Ave  |  |Graffiti Wall of Fame  |  |  |  |4  |
 
-##Artifacts for Next Steps
-###Wireframes
-
-###Tables
-
-####Users
-|u_id  |username  |email  |password  |profile_city  |profile_state  |profile_short  |profile_image  |
-|----|----|----|----|----|----|----|----|
-
-####Favorites
-|f_id  |fav_user_id  |fav_post_id  |
-|----|----|----|
-
-####Comments
-|cm_id  |comment_post_id  |comment_user_id  |comment_text  |
-|----|----|----|----|
+## Market Research by Dael Jaskson
+####<a href="./readmeImages/prdforfinalsubmission.pdf">Trekabilly.com Product Requirements</a><br>
+####<a href="./readmeImages/customermarketresearch.pdf">Customer Market Research</a>
