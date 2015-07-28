@@ -242,7 +242,6 @@ span.card-title{
   /*height: 264 px;*/
 }
 .logo {
-  /*background-image: url(<%= asset_path 'logo.png'%>);*/
   z-index: 9999;
   
   position: relative;
@@ -263,6 +262,28 @@ span.card-title{
   /*margin: 10%;*/
 }
 
+/*Category Icons
+===========================*/
+
+.food-drink { 
+  background-image: url(<%= asset_data_uri 'cat-food_drink.png' %>)
+}
+.sights {
+  background-image: url(<%= asset_data_uri 'cat-sights.png' %>)
+}
+.parks {
+  background-image: url(<%= asset_data_uri 'cat-parks.png' %>)
+}
+.culture {
+  background-image: url(<%= asset_data_uri 'cat-culture.png' %>)
+}
+.other {
+  background-image: url(<%= asset_data_uri 'cat-other.png' %>)
+}
+
+
+/*MediaQueries
+===========================*/
 
 @media (max-width: 992px) {
   /*category name positions when in mobile mode*/
