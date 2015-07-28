@@ -58,7 +58,7 @@ Our goal with Trekabilly is to create a community website where individuals post
 |3  |Watch Sports at Rose Hill Tavern  |http://s3-media4.fl.yelpcdn.com/bphoto/NCNPJSJ77V4abst58wogGw/ls.jpg  |It's a medium sized... |  |  |1  |2  |1  |4/4/2015 13:36:00|
 
 ####Locations
-|l_id  |street_address  |city  |state  |cross_st1  |cross_st2  |neighborhood  |location_name  |location_notes  |phone  |website  |category_id
+|id  |street_address  |city  |state  |cross_st1  |cross_st2  |neighborhood  |location_name  |location_notes  |phone  |website  |category_id
 |----|----|----|----|----|----|----|----|----|----|----|---|
 |1  |24 Reed St  |Brooklyn  |NY  |  |  |  |Brooklyn Crab  |Great Views  |  |  |1  |
 |2  |337 3rd ave  |New York  |NY  |  |  |  |Rose Hill Tavern  |Sports Bar  |  |  |1  |
