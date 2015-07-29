@@ -10,11 +10,11 @@ Category.delete_all
 Location.delete_all
 Post.delete_all
 
-Category.create({name: "Food and Drink", icon: "cat-food_drink.png"})
-Category.create({name: "Sights", icon: "cat-sights.png"})
-Category.create({name: "Parks", icon: "cat-parks.png"})
-Category.create({name: "Culture", icon: "cat-culture.png"})
-Category.create({name: "Other Activities", icon: "cat-other.png"})
+Category.create({name: "Food and Drink", icon: "cat-food_drink-90000c4dbf5dfba5c831c066828bc8afc8cbe8e69d55fc43b9067a44ca5bbcbe.png"})
+Category.create({name: "Sights", icon: "cat-sights-40c944f6906fbe4f250a92bd7f0c9a77234dfdfdbbedadd4e6dcf71ddca1f8e3.png"})
+Category.create({name: "Parks", icon: "cat-parks-ad996a3c79c09114ef24ed0bc7567b3e6d7db7d2a47f54a07d43ecebcd39f722.png"})
+Category.create({name: "Culture", icon: "cat-culture-b57e3fc8d2eeb87eafc2fd95b0e4653031829bf9ebedd7c83fa42e4fb04cd52c.png"})
+Category.create({name: "Other Activities", icon: "cat-other-13b8240ecd230b78840316ce755093be28295441f23d6de18b75117b5a0a6cb8.png"})
 
 Location.create({address: "24 Reed St", city: "Brooklyn", state: "NY", location_name: "Brooklyn Crab", location_notes: "Great Views", location_category_id: 1})
 Location.create({address: "337 3rd Ave", city: "New York", state: "NY", location_name: "Rose Hill Tavern", location_notes: "Sports Bar", location_category_id: 1})
