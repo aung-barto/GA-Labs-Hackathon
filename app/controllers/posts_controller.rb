@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
     # get similar posts
     @posts = Post.where(category_id: @category.id).where.not(id: params[:id]).sample(4)
+    @icons = Category.find(@post.category_id)
 	end
   
   def search
@@ -25,13 +26,13 @@ class PostsController < ApplicationController
     else 
       # results are items from the post table
       @results = Post.search(@query).limit(10)
-      # grab only categories that match category_id from the results
-      # @categories = Category.where(id: @results.category_id)
+      @categories = []
   
-    # get address to be convert into lat/lng for map markers
-    @locations = []
+      # get address to be convert into lat/lng for map markers
+      @locations = []
       @results.each do |r|
         @locations << Location.find(r.location_id)
+        @categories << Category.find(r.category_id)
       end
 
     end

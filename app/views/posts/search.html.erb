@@ -62,6 +62,11 @@
           <span class="card-title "><%= link_to r.title, r, class:'title shadow' %></span>
           </div>
           <div class="card-content">
+            <% @categories.each do |cat| %>
+              <% if r.category_id == cat.id %>
+                <%= image_tag cat.icon, class:'icon' %>
+              <% end %>
+            <% end %>
             <p class="p"><%= link_to r.content, r, class:'post-text' %></p>
           </div>
 
