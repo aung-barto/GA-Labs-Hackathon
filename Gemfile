@@ -4,7 +4,7 @@ ruby '2.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
-# gem 'pg'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,9 +45,11 @@ group :development, :test do
   gem 'materialize-sass', '~> 0.96.1'
 end
 
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
+gem 'rails_12factor', group: :production
+
+# group :production do
+#   gem 'pg'
+#   gem 'rails_12factor'
+# end
 
 
