@@ -23,7 +23,10 @@ class PostsController < ApplicationController
       redirect_to root_path, @error => "Please enter a search word"
 
     else 
+      # results are items from the post table
       @results = Post.search(@query).limit(10)
+      # grab only categories that match category_id from the results
+      @categories = Category.where(id: @results.category_id)
   
     # get address to be convert into lat/lng for map markers
     @locations = []
