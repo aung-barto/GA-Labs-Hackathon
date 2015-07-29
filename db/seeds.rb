@@ -10,11 +10,11 @@ Category.delete_all
 Location.delete_all
 Post.delete_all
 
-Category.create({name: "Food and Drink", icon: "<%= image_tag(cat-food_drink.png)%>"})
-Category.create({name: "Sights", icon: "<%= image_tag(cat-sights.png)%>"})
-Category.create({name: "Parks", icon: "<%= image_tag(cat-parks.png)%>"})
-Category.create({name: "Culture", icon: "<%= image_tag(cat-culture.png)%>"})
-Category.create({name: "Other Activities", icon: "<%= image_tag(cat-other.png)%>"})
+Category.create({name: "Food and Drink", icon: "http://i.imgur.com/4fj3Nlf.png"})
+Category.create({name: "Sights", icon: "http://i.imgur.com/aW5wAOR.png"})
+Category.create({name: "Parks", icon: "http://i.imgur.com/NvyVRZp.png"})
+Category.create({name: "Culture", icon: "http://i.imgur.com/asL5hTQ.png"})
+Category.create({name: "Other Activities", icon: "http://i.imgur.com/E8kIaYD.png"})
 
 Location.create({address: "24 Reed St", city: "Brooklyn", state: "NY", location_name: "Brooklyn Crab", location_notes: "Great Views", location_category_id: 1})
 Location.create({address: "337 3rd Ave", city: "New York", state: "NY", location_name: "Rose Hill Tavern", location_notes: "Sports Bar", location_category_id: 1})
