@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_for :users
   root 'home#index'
 
   #search for home
@@ -7,8 +9,13 @@ Rails.application.routes.draw do
   get '/search' => 'posts#search'
   get '/to_json' => 'posts#to_json'
 
-  resources :category
+  resources :category, only: [:index, :show]
   resources :posts
+
+  resources :users do 
+    resources :posts
+  end
+    
   # resources :search
 
   # The priority is based upon order of creation: first created -> highest priority.
