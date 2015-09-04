@@ -1,25 +1,3 @@
-<!-- Header
-=================== -->
-<header class="row">
-    <!-- logo -->
-  <%= link_to image_tag('logo.png', class:'logo col s12 m5 l3'), root_path %> 
-  <nav class="white">
-    <!-- search -->
-    <div class="nav-wrapper grey lighten-5 col s12 m5 l4 offset-l3" style="height: 120%;">
-      <ul class="right">
-        <li><form action="/search" accept-charset="UTF-8" method="get">
-          <div class="input-field left col s12 m12 l12">
-            <input name="utf8" type="hidden" value="✓" required>
-            <input type="text" name="name" id="search" placeholder="search">
-            <button class="btn-flat" type="submit" name="action" for="search"><i class="material-icons">search</i></button>
-          </div>
-        </form></li>
-        <li><%= link_to "Previous Page", :back, class:'col s12 m12 l12 previous grey lighten-5 deep-purple-text text-darken-2' %></li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
 <!-- Body
 =================== -->
 
